@@ -1,467 +1,163 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dlicom RU — Русское Комьюнити</title>
+<title>Dlicom — Community Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --black:#000000;
-  --blue:#1a6fff;
-  --cyan:#00c8ff;
-  --purple:#5b2cf0;
-  --text:#ffffff;
-  --muted:#5a6a80;
-  --card-bg:#080808;
-  --border:rgba(255,255,255,0.08);
-}
-html{scroll-behavior:smooth;}
-body{font-family:'Onest',sans-serif;background:var(--black);color:var(--text);overflow-x:hidden;cursor:none;}
-
-/* CURSOR */
-#cur{position:fixed;width:6px;height:6px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference;}
-#cring{position:fixed;width:28px;height:28px;border:1px solid rgba(0,200,255,0.5);border-radius:50%;pointer-events:none;z-index:9998;transition:border-color 0.2s;}
-
-/* NAV */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:20px 60px;
-  background:rgba(0,0,0,0.6);backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--border);
-}
-.nlogo{display:flex;align-items:center;gap:14px;text-decoration:none;}
-.nlogo img{height:28px;filter:brightness(10);}
-.nlogo-text{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:#fff;}
-.nlogo-sub{font-size:9px;color:var(--cyan);letter-spacing:4px;text-transform:uppercase;margin-top:-3px;}
-.nlinks{display:flex;gap:40px;align-items:center;}
-.nlinks a{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
-.nlinks a:hover{color:#fff;}
-.ncta{
-  background:transparent;color:#fff !important;
-  padding:10px 24px;border-radius:4px;
-  font-family:'Bebas Neue',sans-serif;font-size:15px !important;
-  letter-spacing:3px !important;
-  border:1px solid rgba(255,255,255,0.3);transition:all 0.3s !important;
-}
-.ncta:hover{background:#fff !important;color:#000 !important;border-color:#fff;}
-
-/* HERO */
-.hero{
-  position:relative;min-height:100vh;
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;background:#000;
-}
-#threeCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;}
-
-/* Subtle scanlines */
-.hero::after{
-  content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);
-}
-
-.hero-content{
-  position:relative;z-index:10;
-  text-align:center;max-width:1000px;padding:0 60px;
-}
-.htag{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);
-  color:var(--cyan);font-size:10px;letter-spacing:4px;text-transform:uppercase;
-  padding:7px 20px;border-radius:2px;margin-bottom:32px;
-  animation:fadeIn 1s ease both;
-}
-.htag::before{content:'';width:5px;height:5px;background:var(--cyan);border-radius:50%;box-shadow:0 0 8px var(--cyan);animation:blink 2s ease infinite;}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
-.heyebrow{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:16px;letter-spacing:8px;color:var(--muted);
-  margin-bottom:8px;animation:fadeIn 1s ease 0.2s both;
-}
-h1.hero-h1{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(72px,13vw,180px);
-  line-height:0.88;letter-spacing:2px;
-  color:#fff;margin-bottom:8px;
-  animation:fadeIn 1s ease 0.3s both;
-}
-h1.hero-h1 .accent-word{
-  display:block;
-  -webkit-text-stroke:2px var(--cyan);
-  color:transparent;
-  text-shadow:0 0 60px rgba(0,200,255,0.3);
-}
-.hero-sub{
-  font-size:15px;color:var(--muted);font-weight:300;
-  max-width:480px;margin:28px auto 48px;line-height:1.8;
-  animation:fadeIn 1s ease 0.5s both;
-}
-.hero-sub strong{color:#fff;font-weight:500;}
-.hbtns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeIn 1s ease 0.7s both;}
-.btn-a{
-  display:inline-flex;align-items:center;gap:10px;
-  background:#fff;color:#000;
-  font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:3px;
-  padding:14px 36px;border-radius:2px;text-decoration:none;
-  transition:all 0.25s;
-}
-.btn-a:hover{background:var(--cyan);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,200,255,0.3);}
-.btn-b{
-  display:inline-flex;align-items:center;gap:10px;
-  background:transparent;color:#fff;
-  font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:3px;
-  padding:14px 36px;border-radius:2px;text-decoration:none;
-  border:1px solid rgba(255,255,255,0.2);transition:all 0.25s;
-}
-.btn-b:hover{border-color:#fff;background:rgba(255,255,255,0.05);}
-.btn-c{
-  display:inline-flex;align-items:center;gap:10px;
-  background:var(--purple);color:#fff;
-  font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:3px;
-  padding:14px 36px;border-radius:2px;text-decoration:none;
-  border:1px solid rgba(91,44,240,0.5);transition:all 0.25s;
-}
-.btn-c:hover{background:#6f3af0;transform:translateY(-2px);box-shadow:0 8px 30px rgba(91,44,240,0.3);}
-
-/* SCROLL INDICATOR */
-.scroll-ind{
-  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
-  z-index:10;display:flex;flex-direction:column;align-items:center;gap:10px;
-  color:var(--muted);font-size:9px;letter-spacing:4px;text-transform:uppercase;
-  animation:fadeIn 1s ease 1.2s both;
-}
-.sline{width:1px;height:50px;background:linear-gradient(to bottom,rgba(0,200,255,0.6),transparent);animation:scanDown 2s ease-in-out infinite;}
-@keyframes scanDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-
-/* PAGE MARKER */
-.pgmark{
-  position:fixed;right:28px;top:50%;transform:translateY(-50%) rotate(90deg);
-  font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:4px;color:rgba(255,255,255,0.15);
-  z-index:50;pointer-events:none;
-}
-
-/* STATS BAR */
-.stats-bar{
-  background:#000;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  padding:28px 60px;display:flex;justify-content:center;gap:80px;flex-wrap:wrap;
-}
-.si{text-align:center;}
-.sn{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:2px;color:#fff;display:block;}
-.sn span{color:var(--cyan);}
-.sl{font-size:10px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-top:2px;display:block;}
-
-/* MAIN */
-main{position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 60px;}
-
-/* SECTION TITLES */
-.stitle{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(36px,5vw,64px);
-  letter-spacing:2px;
-  margin:100px 0 40px;
-  line-height:1;
-  border-left:3px solid var(--cyan);
-  padding-left:20px;
-}
-.stitle .acc{color:var(--cyan);}
-
-/* CARDS — new brutalist style */
-.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--border);margin-bottom:40px;}
-.card{
-  background:var(--card-bg);padding:36px 32px;
-  position:relative;overflow:hidden;
-  transition:background 0.3s;
-}
-.card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--cyan);transition:width 0.4s;}
-.card:hover::after{width:100%;}
-.card:hover{background:#0f0f0f;}
-.card-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:rgba(255,255,255,0.06);line-height:1;margin-bottom:16px;letter-spacing:2px;}
-.card h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;margin-bottom:12px;color:#fff;}
-.card p{font-size:13px;color:var(--muted);line-height:1.75;}
-.card p strong{color:#fff;}
-
-/* STEPS */
-.steps{display:flex;flex-direction:column;margin-bottom:40px;}
-.step{display:flex;gap:32px;align-items:flex-start;padding:28px 0;border-bottom:1px solid var(--border);}
-.step:last-child{border-bottom:none;}
-.snum{font-family:'Bebas Neue',sans-serif;font-size:48px;color:rgba(0,200,255,0.2);line-height:1;flex-shrink:0;width:60px;}
-.step:nth-child(2) .snum{color:rgba(91,44,240,0.2);}
-.step:nth-child(3) .snum{color:rgba(255,107,157,0.2);}
-.step:nth-child(4) .snum{color:rgba(0,255,157,0.2);}
-.scont h4{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;margin-bottom:8px;}
-.scont p{font-size:13px;color:var(--muted);line-height:1.7;}
-.scont a{color:var(--cyan);text-decoration:none;}
-
-/* HUNT BANNER */
-.hunt-banner{
-  border:1px solid rgba(26,111,255,0.3);
-  background:linear-gradient(135deg,rgba(26,111,255,0.06),rgba(91,44,240,0.06));
-  padding:48px;margin-bottom:40px;
-  position:relative;overflow:hidden;
-}
-.hunt-banner::before{content:'HUNT';position:absolute;right:-20px;top:-20px;font-family:'Bebas Neue',sans-serif;font-size:160px;color:rgba(255,255,255,0.02);letter-spacing:0;line-height:1;pointer-events:none;}
-.hunt-banner h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,48px);letter-spacing:2px;margin-bottom:16px;}
-.hunt-banner p{font-size:14px;color:var(--muted);line-height:1.7;max-width:600px;margin-bottom:32px;}
-.brow{display:flex;gap:12px;flex-wrap:wrap;}
-
-/* PHASES */
-.phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--border);margin-bottom:40px;}
-.phase{background:var(--card-bg);padding:32px;position:relative;overflow:hidden;}
-.phase::before{content:attr(data-n);position:absolute;right:16px;top:8px;font-family:'Bebas Neue',sans-serif;font-size:80px;color:rgba(255,255,255,0.03);line-height:1;}
-.phase-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--cyan);margin-bottom:12px;}
-.phase h4{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:6px;}
-.dates{font-size:11px;color:var(--blue);letter-spacing:2px;margin-bottom:14px;font-weight:500;}
-.phase p{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:12px;}
-.phase ul{padding-left:16px;}
-.phase ul li{font-size:12px;color:var(--muted);margin-bottom:4px;}
-
-/* ROLES */
-.roles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--border);margin-bottom:40px;}
-.role-card{background:var(--card-bg);padding:28px 24px;display:flex;gap:18px;align-items:flex-start;transition:background 0.3s;position:relative;}
-.role-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),transparent);transform:scaleX(0);transition:transform 0.4s;transform-origin:left;}
-.role-card:hover::after{transform:scaleX(1);}
-.role-card:hover{background:#0a0a0a;}
-.remoji{font-size:26px;flex-shrink:0;}
-.rinfo h4{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;margin-bottom:6px;}
-.rinfo p{font-size:12px;color:var(--muted);line-height:1.6;}
-
-/* MASCOT */
-.mascot-strip{
-  display:flex;align-items:center;gap:24px;
-  padding:28px 32px;margin-top:40px;
-  border:1px solid var(--border);
-  background:#050505;
-  flex-wrap:wrap;
-}
-.mascot-strip img{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;filter:drop-shadow(0 0 16px rgba(91,44,240,0.6));}
-.mascot-text{flex:1;min-width:200px;}
-.mascot-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:var(--cyan);margin-bottom:4px;}
-.mascot-text p{font-size:13px;color:var(--muted);line-height:1.6;}
-.mascot-text strong{color:#fff;}
-
-/* TOKEN */
-.token-wrap{display:flex;gap:60px;align-items:center;flex-wrap:wrap;margin-bottom:40px;}
-.donut-box{flex-shrink:0;position:relative;width:260px;height:260px;}
-.donut-box svg{width:260px;height:260px;}
-.donut-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
-.donut-center img{width:58px;filter:brightness(10) drop-shadow(0 0 16px rgba(0,200,255,0.6));animation:tpulse 3s ease-in-out infinite;}
-@keyframes tpulse{0%,100%{filter:brightness(10) drop-shadow(0 0 16px rgba(0,200,255,0.5))}50%{filter:brightness(10) drop-shadow(0 0 32px rgba(0,200,255,1))}}
-.legend{flex:1;min-width:240px;display:flex;flex-direction:column;gap:10px;}
-.lrow{display:flex;align-items:center;gap:10px;font-size:13px;}
-.ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-.lpct{margin-left:auto;font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--muted);letter-spacing:1px;}
-
-/* TOKEN TABLE */
-.ttable{width:100%;border-collapse:collapse;margin-bottom:40px;}
-.ttable tr{border-bottom:1px solid var(--border);transition:background 0.2s;}
-.ttable tr:hover{background:rgba(255,255,255,0.02);}
-.ttable td{padding:16px 0;font-size:13px;}
-.ttable td:first-child{color:var(--muted);letter-spacing:1px;font-size:11px;text-transform:uppercase;}
-.ttable td:last-child{text-align:right;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;color:#fff;}
-
-/* TEAM */
-.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1px;background:var(--border);margin-bottom:40px;}
-.team-card{background:var(--card-bg);transition:background 0.3s;position:relative;overflow:hidden;}
-.team-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--blue);transition:width 0.4s;}
-.team-card:hover::after{width:100%;}
-.team-card:hover{background:#0a0a0a;}
-.tphoto{width:100%;aspect-ratio:1;object-fit:cover;object-position:top;display:block;filter:grayscale(20%);}
-.tinfo{padding:14px 16px;}
-.tinfo h4{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;margin-bottom:3px;}
-.tinfo p{font-size:11px;color:var(--muted);}
-
-/* FAQ */
-.faq-list{display:flex;flex-direction:column;margin-bottom:40px;border:1px solid var(--border);}
-.faq-item{border-bottom:1px solid var(--border);}
-.faq-item:last-child{border-bottom:none;}
-.faq-q{display:flex;justify-content:space-between;align-items:center;padding:22px 28px;cursor:pointer;font-size:14px;font-weight:500;transition:background 0.2s;user-select:none;}
-.faq-q:hover{background:rgba(255,255,255,0.02);}
-.faq-q span:first-child{padding-right:20px;}
-.arrow{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--cyan);transition:transform 0.3s;flex-shrink:0;}
-.faq-item.open .arrow{transform:rotate(45deg);}
-.faq-a{display:none;padding:0 28px 22px;font-size:13px;color:var(--muted);line-height:1.75;}
-.faq-a a{color:var(--cyan);text-decoration:none;}
-.faq-a code{background:rgba(0,200,255,0.08);border:1px solid rgba(0,200,255,0.15);padding:2px 8px;border-radius:2px;font-size:12px;color:var(--cyan);}
-.faq-item.open .faq-a{display:block;}
-
-/* LINKS */
-.links-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1px;background:var(--border);margin-bottom:40px;}
-.link-card{
-  display:flex;align-items:center;gap:12px;
-  background:var(--card-bg);color:#fff;text-decoration:none;
-  padding:18px 20px;font-size:13px;font-weight:500;
-  transition:all 0.25s;position:relative;overflow:hidden;
-}
-.link-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--cyan);transition:width 0.3s;}
-.link-card:hover::after{width:100%;}
-.link-card:hover{background:#0f0f0f;color:var(--cyan);}
-.link-icon{font-size:16px;flex-shrink:0;}
-.link-icon svg{width:18px;height:18px;display:block;}
-
-/* CTA */
-.cta-block{
-  border:1px solid var(--border);
-  padding:48px;
-  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:60px;
-  position:relative;overflow:hidden;
-}
-.cta-block::before{content:'JOIN';position:absolute;right:-10px;bottom:-30px;font-family:'Bebas Neue',sans-serif;font-size:180px;color:rgba(255,255,255,0.02);line-height:1;pointer-events:none;letter-spacing:0;}
-.cta-text h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(24px,3vw,40px);letter-spacing:2px;margin-bottom:8px;}
-.cta-text p{font-size:13px;color:var(--muted);}
-.brow{display:flex;gap:12px;flex-wrap:wrap;}
-
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:28px 60px;max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
-.fbrand{display:flex;align-items:center;gap:12px;}
-.fbrand img{height:16px;opacity:0.3;filter:invert(1);}
-.fbrand span{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--muted);}
-.flinks{display:flex;gap:24px;flex-wrap:wrap;}
-.flinks a{color:var(--muted);text-decoration:none;font-size:11px;letter-spacing:1px;transition:color 0.2s;}
-.flinks a:hover{color:#fff;}
-.dlink{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(88,101,242,0.3);color:#a0a8ff;font-size:12px;padding:9px 18px;text-decoration:none;transition:all 0.2s;letter-spacing:1px;}
-.dlink:hover{background:rgba(88,101,242,0.1);}
-
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease;}
-.reveal.vis{opacity:1;transform:translateY(0);}
-
-@keyframes fadeIn{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
-
-@media(max-width:768px){
-  nav{padding:16px 20px;}
-  .nlinks{display:none;}
-  .hero-content{padding:0 24px;}
-  h1.hero-h1{font-size:clamp(56px,15vw,90px);}
-  main{padding:0 20px;}
-  footer{padding:20px;flex-direction:column;align-items:flex-start;}
-  .stats-bar{gap:40px;padding:24px;}
-  .cta-block,.hunt-banner{padding:28px;}
-  .token-wrap{flex-direction:column;align-items:flex-start;}
-}
-</style>
 </head>
 <body>
 
 <div id="cur"></div>
 <div id="cring"></div>
-<div class="pgmark">PAGE 01</div>
 
-<!-- NAV -->
+
 <nav>
   <a href="#" class="nlogo">
     <img src="https://i.postimg.cc/65j78jJr/imagevfyvf.png" alt="Dlicom">
-    <div><div class="nlogo-text">DLICOM</div><div class="nlogo-sub">RU Community</div></div>
+    <div><div class="nlogo-text">DLICOM</div><div class="nlogo-sub" data-i18n="nav_sub">Community Hub</div></div>
   </a>
   <div class="nlinks">
-    <a href="#about">О проекте</a>
+    <a href="#about" data-i18n="nav_about">About</a>
     <a href="#hunt">Hunt</a>
-    <a href="#roles">Роли</a>
-    <a href="#tokenomics">Токен</a>
-    <a href="#team">Команда</a>
+    <a href="#roles" data-i18n="nav_roles">Roles</a>
+    <a href="#tokenomics" data-i18n="nav_token">Token</a>
+    <a href="#team" data-i18n="nav_team">Team</a>
     <a href="#faq">FAQ</a>
     <a href="https://discord.gg/BmYmRXc8" target="_blank" class="ncta">↗ Discord</a>
+    <div class="lang-switcher">
+      <button class="lang-btn" id="langBtn"><span class="lang-flag">🌐</span> <span id="langLabel">EN</span> ▾</button>
+      <div class="lang-dropdown" id="langDropdown">
+        <div class="lang-option active" data-lang="en">🇬🇧 English</div>
+        <div class="lang-option" data-lang="ru">🇷🇺 Русский</div>
+        <div class="lang-option" data-lang="ar">🇵🇸 العربية</div>
+        <div class="lang-option" data-lang="uk">🇺🇦 Українська</div>
+        <div class="lang-option" data-lang="vi">🇻🇳 Tiếng Việt</div>
+        <div class="lang-option" data-lang="hi">🇮🇳 हिन्दी</div>
+        <div class="lang-option" data-lang="ng">🇳🇬 Naija</div>
+      </div>
+    </div>
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero" id="about">
   <canvas id="threeCanvas"></canvas>
-
   <div class="hero-content">
-    <div class="htag">🇷🇺 Русское Сообщество</div>
+    <div class="htag" data-i18n="hero_tag">🌍 Global Community</div>
     <div class="heyebrow">Dlicom Protocol</div>
     <h1 class="hero-h1">
-      RU<br>
-      <span class="accent-word">COMMUNITY</span>
+      COMMUNITY<br>
+      <span class="accent-word">HUB</span>
     </h1>
-    <p class="hero-sub">Всё о <strong>Dlicom</strong> — децентрализованной платформе с DeFi, крипто-кошельком и соцсетью. Гайды, FAQ и новости для русскоязычного комьюнити.</p>
+    <p class="hero-sub" data-i18n="hero_sub">Everything about <strong>Dlicom</strong> — a decentralized platform with DeFi, crypto wallet and social network. Guides, FAQ and news for the global community.</p>
     <div class="hbtns">
-      <a href="https://discord.gg/BmYmRXc8" target="_blank" class="btn-a">↗ Войти в Discord</a>
-      <a href="https://www.dlicom.io" target="_blank" class="btn-b">Сайт проекта</a>
+      <a href="https://discord.gg/BmYmRXc8" target="_blank" class="btn-a" data-i18n="hero_btn1">↗ Join Discord</a>
+      <a href="https://www.dlicom.io" target="_blank" class="btn-b" data-i18n="hero_btn2">Project Website</a>
     </div>
   </div>
-
-  <div class="scroll-ind"><div class="sline"></div><span>scroll</span></div>
+  <div class="scroll-ind"><div class="sline"></div><span data-i18n="scroll">scroll</span></div>
 </div>
 
-<!-- STATS -->
 <div class="stats-bar">
-  <div class="si"><span class="sn">DLI</span><span class="sl">Токен</span></div>
-  <div class="si"><span class="sn">Web<span>3</span></span><span class="sl">Платформа</span></div>
+  <div class="si"><span class="sn">DLI</span><span class="sl" data-i18n="stat_token">Token</span></div>
+  <div class="si"><span class="sn">Web<span>3</span></span><span class="sl" data-i18n="stat_platform">Platform</span></div>
   <div class="si"><span class="sn">355<span>M</span></span><span class="sl">Total Supply</span></div>
-  <div class="si"><span class="sn">ERC<span>-20</span></span><span class="sl">Стандарт</span></div>
+  <div class="si"><span class="sn">ERC<span>-20</span></span><span class="sl" data-i18n="stat_standard">Standard</span></div>
 </div>
 
 <main>
 
-  <!-- MASCOT -->
   <div class="mascot-strip reveal">
-    <img src="dili-mascot.png" alt="Dili">
+    <img src="https://www.dlicom.io/_next/static/media/dili.6c7c7da4.png" alt="Dili" onerror="this.src='https://i.postimg.cc/65j78jJr/imagevfyvf.png'">
     <div class="mascot-text">
-      <div class="mascot-title">Знакомься — это Дили (Dili)</div>
-      <p>Официальный маскот Dlicom — лицо SocialFi. Придумай его историю, лор или концепцию и получи роль <strong>Dliever</strong>. Любой формат: текст, видео, арт.</p>
+      <div class="mascot-title" data-i18n="mascot_title">Meet Dili</div>
+      <p data-i18n="mascot_desc">The official Dlicom mascot — the face of SocialFi. Create a story, lore or concept about him and earn the <strong>Dliever</strong> role. Any format: text, video, art.</p>
     </div>
-    <a href="https://www.figma.com/design/JLmiIppBpTUqUszsvyy5ur/Dlicom-branding?node-id=61-2819" target="_blank" class="btn-b" style="white-space:nowrap;font-size:14px;padding:11px 24px;">Брендинг →</a>
+    <a href="https://www.figma.com/design/JLmiIppBpTUqUszsvyy5ur/Dlicom-branding?node-id=61-2819" target="_blank" class="btn-b" style="white-space:nowrap;font-size:14px;padding:11px 24px;" data-i18n="mascot_btn">Branding →</a>
   </div>
 
-  <!-- WHAT IS -->
-  <div class="stitle reveal">Что такое <span class="acc">Dlicom</span></div>
-  <div class="grid-2 reveal">
-    <div class="card"><div class="card-num">01</div><h3>Социальная сеть</h3><p>Публикуй посты, общайся в зашифрованных чатах, получай чаевые в DLI токенах. Цензуростойкая альтернатива традиционным соцсетям.</p></div>
-    <div class="card"><div class="card-num">02</div><h3>Крипто-кошелёк</h3><p>Self-custody кошелёк с поддержкой криптовалют и NFT. Свопы с лучшими курсами, оплата газа токенами DLI, отправка прямо в чате.</p></div>
-    <div class="card"><div class="card-num">03</div><h3>DeFi & Стейкинг</h3><p>Стейкинг DLI токенов с наградами в USDT. Несколько периодов на выбор. Доступ к dApps через встроенный Web3 браузер.</p></div>
+  <div class="stitle reveal">What is <span class="acc">Dlicom</span></div>
+  <div class="grid-3 reveal">
+    <div class="card"><div class="card-num">01</div><h3 data-i18n="feat1_title">Social Network</h3><p data-i18n="feat1_desc">Publish posts, chat in encrypted messages, earn tips in DLI tokens. A censorship-resistant alternative to traditional social networks.</p></div>
+    <div class="card"><div class="card-num">02</div><h3 data-i18n="feat2_title">Crypto Wallet</h3><p data-i18n="feat2_desc">Self-custody wallet with crypto and NFT support. Best-rate swaps, pay gas fees with DLI tokens, send directly in chat.</p></div>
+    <div class="card"><div class="card-num">03</div><h3 data-i18n="feat3_title">DeFi & Staking</h3><p data-i18n="feat3_desc">Stake DLI tokens for USDT rewards. Multiple periods available. Access dApps via built-in Web3 browser.</p></div>
   </div>
 
-  <!-- HOW TO START -->
-  <div class="stitle reveal" id="start">Как <span class="acc">начать</span></div>
+  <div class="stitle reveal" id="start">How to <span class="acc">Start</span></div>
   <div class="steps reveal">
-    <div class="step"><div class="snum">01</div><div class="scont"><h4>Скачай приложение</h4><p>Доступно в <a href="https://apps.apple.com/us/app/dlicom/id6502626332" target="_blank">App Store</a> и <a href="https://play.google.com/store/search?q=dlicom&c=apps" target="_blank">Google Play</a>. Разработчик: Shlenpower Pte. Ltd.</p></div></div>
-    <div class="step"><div class="snum">02</div><div class="scont"><h4>Создай кошелёк</h4><p>При регистрации создай новый кошелёк или импортируй существующий. Сохрани seed-фразу в безопасном месте — восстановление без неё невозможно.</p></div></div>
-    <div class="step"><div class="snum">03</div><div class="scont"><h4>Вступи в Discord</h4><p>Присоединяйся к <a href="https://discord.gg/BmYmRXc8" target="_blank">официальному серверу</a>. Выбери 🇷🇺 Russian, чтобы открыть русскоязычные каналы.</p></div></div>
-    <div class="step"><div class="snum">04</div><div class="scont"><h4>Стань активным участником</h4><p>Участвуй в активностях, помогай новичкам, участвуй в Regional Hunt — зарабатывай роли Dliever, Dcoded и DCO.</p></div></div>
+    <div class="step"><div class="snum">01</div><div class="scont"><h4 data-i18n="step1_title">Download the App</h4><p data-i18n="step1_desc">Available on <a href="https://apps.apple.com/us/app/dlicom/id6502626332" target="_blank">App Store</a> and <a href="https://play.google.com/store/search?q=dlicom&c=apps" target="_blank">Google Play</a>. Developer: Shlenpower Pte. Ltd.</p></div></div>
+    <div class="step"><div class="snum">02</div><div class="scont"><h4 data-i18n="step2_title">Create a Wallet</h4><p data-i18n="step2_desc">During registration, create a new wallet or import an existing one. Save your seed phrase in a safe place — recovery without it is impossible.</p></div></div>
+    <div class="step"><div class="snum">03</div><div class="scont"><h4 data-i18n="step3_title">Join Discord</h4><p data-i18n="step3_desc">Join the <a href="https://discord.gg/BmYmRXc8" target="_blank">official server</a>. Choose your region to unlock the right channels.</p></div></div>
+    <div class="step"><div class="snum">04</div><div class="scont"><h4 data-i18n="step4_title">Become an Active Member</h4><p data-i18n="step4_desc">Participate in activities, help newcomers, join the Regional Hunt — earn Dliever, Dcoded and DCO roles.</p></div></div>
   </div>
 
-  <!-- HUNT -->
   <div class="stitle reveal" id="hunt">Regional Lead <span class="acc">Hunt</span></div>
   <div class="hunt-banner reveal">
-    <h3>Стань Regional Lead или Mod</h3>
-    <p>Момент, когда любой может стать лидером RU региона. Работай с командой, получай роли и влияй на развитие русского комьюнити. Прямо сейчас — никаких модераторов, никаких лидов. Место свободно.</p>
+    <h3 data-i18n="hunt_title">Become Regional Lead or Mod</h3>
+    <p data-i18n="hunt_desc">The moment anyone can become a leader of their region. Work with the team, earn roles and shape the community. Right now — no moderators, no leads. The spot is open.</p>
     <div class="brow">
-      <a href="https://forms.gle/LT9mZUa1KyUmxrZ1A" target="_blank" class="btn-c">📋 Подать заявку</a>
-      <a href="https://discord.gg/BmYmRXc8" target="_blank" class="btn-b">Перейти в Discord</a>
+      <a href="https://forms.gle/LT9mZUa1KyUmxrZ1A" target="_blank" class="btn-hunt-apply"><span data-i18n="hunt_apply">Apply Now</span></a>
+      <a href="https://discord.gg/BmYmRXc8" target="_blank" class="btn-hunt-discord" data-i18n="hunt_discord">Go to Discord</a>
     </div>
   </div>
 
-  <div class="stitle reveal">Фазы <span class="acc">Ханта</span></div>
+  <div class="hunt-roles-grid reveal">
+    <div class="hunt-role-card">
+      <div class="hunt-role-tag lead">@Regional Lead</div>
+      <p>Community manager of your region. Responsible for growth, retention, positioning, managing regional campaigns and analytics.</p>
+    </div>
+    <div class="hunt-role-card">
+      <div class="hunt-role-tag helper">@Regional Helper</div>
+      <p>Leader's assistant. Answers questions, guides members, runs events and keeps the chat active.</p>
+    </div>
+    <div class="hunt-role-card">
+      <div class="hunt-role-tag contributor">@Dliever / @Dcoded / @DCO</div>
+      <p>Active content creators and contributors. Building games, websites, helping the team. Mostly active in <strong>#creators</strong> and <strong>#dlicom-creators</strong>.</p>
+    </div>
+    <div class="hunt-role-card junior">
+      <div class="hunt-role-tag junior-tag">🔹 Junior Hunter</div>
+      <p>Fill the form and get this special role — grants access to <strong>#nominations</strong> and other private channels.</p>
+      <a href="https://forms.gle/LT9mZUa1KyUmxrZ1A" target="_blank" class="hunt-role-link">Fill the form →</a>
+    </div>
+  </div>
+
+  <div class="stitle reveal">Hunt <span class="acc">Phases</span></div>
   <div class="phases reveal">
-    <div class="phase" data-n="1"><div class="phase-label">Фаза 1</div><h4>Заяви о себе</h4><div class="dates">25 ФЕВ — 3 МАР</div><p>Начальный отбор. Открывается канал номинаций.</p><ul><li>10 ролей Dliever</li><li>Номинации открыты</li></ul></div>
-    <div class="phase" data-n="2"><div class="phase-label">Фаза 2</div><h4>Испытательный срок</h4><div class="dates">4 МАР — 10 МАР</div><p>Топ 5 кандидатов начинают работу с командой. Только Dliever может получить Dcoded.</p><ul><li>5 ролей Dcoded</li><li>Работа с командой</li></ul></div>
-    <div class="phase" data-n="3"><div class="phase-label">Фаза 3</div><h4>Финал</h4><div class="dates">11 МАР — 18 МАР</div><p>Лидеры и моды получают роли и права. Публикуется список финалистов.</p><ul><li>1 роль DCO</li><li>Итоги публикуются</li></ul></div>
+    <div class="phase" data-n="1"><div class="phase-label" data-i18n="phase1_label">Phase 1</div><h4 data-i18n="phase1_title">Make Your Mark</h4><div class="dates">27 FEB — 11 MAR</div><p>Initial selection. Nominations channel opens. The team observes, helps and guides everyone in the right direction.</p><ul><li>10 Dliever roles per region</li><li>Nominations open for form fillers</li><li>Junior Hunter role available</li></ul></div>
+    <div class="phase" data-n="2"><div class="phase-label" data-i18n="phase2_label">Phase 2</div><h4 data-i18n="phase2_title">Trial Period</h4><div class="dates">12 MAR — 19 MAR</div><p>Top 5 candidates per region start working with the community team. Selected candidates can nominate people for Dliever and Dcoded.</p><ul><li>5 Dcoded roles per region</li><li>Only a Dliever can receive Dcoded</li><li>Direct team collaboration</li></ul></div>
+    <div class="phase" data-n="3"><div class="phase-label" data-i18n="phase3_label">Phase 3</div><h4 data-i18n="phase3_title">Final</h4><div class="dates">20 MAR — 27 MAR</div><p>Leads and mods in place, roles and permissions assigned. The hardest role — Dlicom Contribution Officer — becomes available.</p><ul><li>1 DCO role per region</li><li>Must have Dcoded + Dlicom server tag</li><li>Regional Lead &amp; Helper assigned</li></ul></div>
   </div>
 
-  <!-- ROLES -->
-  <div class="stitle reveal" id="roles">Роли в <span class="acc">комьюнити</span></div>
+  <div class="hunt-results reveal">
+    <div class="hunt-results-title">Per region results</div>
+    <div class="hunt-results-grid">
+      <div class="hres-item"><span class="hres-role" style="color:#00c8ff">@Regional Lead</span><span class="hres-count">×1</span></div>
+      <div class="hres-item"><span class="hres-role" style="color:#a78bfa">@Regional Helper</span><span class="hres-count">×1</span></div>
+      <div class="hres-item"><span class="hres-role" style="color:#22c55e">@Dliever</span><span class="hres-count">×10 <span class="hres-phase">(Phase 1)</span></span></div>
+      <div class="hres-item"><span class="hres-role" style="color:#3b82f6">@Dcoded</span><span class="hres-count">×5 <span class="hres-phase">(Phase 2)</span></span></div>
+      <div class="hres-item"><span class="hres-role" style="color:#f59e0b">@DCO</span><span class="hres-count">×1 <span class="hres-phase">(Phase 3)</span></span></div>
+    </div>
+  </div>
+
+  <div class="stitle reveal" id="roles">Community <span class="acc">Roles</span></div>
   <div class="roles-grid reveal">
-    <div class="role-card"><div class="remoji">🛡️</div><div class="rinfo"><h4>Dliever</h4><p>Пионеры, доказавшие надёжность и знание Dlicom. Самая желанная базовая роль — старт всего.</p></div></div>
-    <div class="role-card"><div class="remoji">⚙️</div><div class="rinfo"><h4>Dcoded</h4><p>Активные и преданные участники — пример для новичков. Требует наличие Dliever.</p></div></div>
-    <div class="role-card"><div class="remoji">🏅</div><div class="rinfo"><h4>DCO</h4><p>Dlicom Contribution Officer. Самая редкая роль. Нужен Dcoded + тег сервера.</p></div></div>
-    <div class="role-card"><div class="remoji">👑</div><div class="rinfo"><h4>OG</h4><p>Легендарные 1000 первых пользователей. Аирдроп буст, бонусный XP. Больше не выдаётся.</p></div></div>
+    <div class="role-card"><div class="remoji">🛡️</div><div class="rinfo"><h4>Dliever</h4><p data-i18n="role1_desc">Pioneers who proved their reliability and knowledge of Dlicom. The most sought-after base role — the start of everything.</p></div></div>
+    <div class="role-card"><div class="remoji">⚙️</div><div class="rinfo"><h4>Dcoded</h4><p data-i18n="role2_desc">Active and dedicated members — an example for newcomers. Requires Dliever role.</p></div></div>
+    <div class="role-card"><div class="remoji">🏅</div><div class="rinfo"><h4>DCO</h4><p data-i18n="role3_desc">Dlicom Contribution Officer. The rarest role. Requires Dcoded + server tag.</p></div></div>
+    <div class="role-card"><div class="remoji">👑</div><div class="rinfo"><h4>OG</h4><p data-i18n="role4_desc">Legendary first 1000 users. Airdrop boost, bonus XP. No longer awarded.</p></div></div>
   </div>
 
-  <!-- RULES -->
-  <div class="stitle reveal">Правила <span class="acc">сообщества</span></div>
+  <div class="stitle reveal">Community <span class="acc">Rules</span></div>
   <div class="grid-2 reveal">
-    <div class="card"><div class="card-num">⛔</div><h3>Запрещено</h3><p>Политика, расизм, дискриминация. NSFW контент. Спам и самореклама. Офф-топ в тематических каналах.</p></div>
-    <div class="card"><div class="card-num">🤝</div><h3>Приветствуется</h3><p>Помогай новичкам, расти сам, строй связи. Превращай идеи в действия. Будь собой.</p></div>
-    <div class="card"><div class="card-num">🕵️</div><h3>Осторожно со скамом</h3><p>Команда Dlicom <strong>никогда не напишет тебе первой в личку</strong>. Всегда проверяй.</p></div>
-    <div class="card"><div class="card-num">🚀</div><h3>Принцип комьюнити</h3><p>Ценность — это всё. Канал <strong>#creators</strong> — самый надёжный способ получить роль.</p></div>
+    <div class="card"><div class="card-icon">⛔</div><h3 data-i18n="rule1_title">Prohibited</h3><p data-i18n="rule1_desc">Politics, racism, discrimination. NSFW content. Spam and self-promotion. Off-topic in themed channels.</p></div>
+    <div class="card"><div class="card-icon">🤝</div><h3 data-i18n="rule2_title">Welcome</h3><p data-i18n="rule2_desc">Help newcomers, grow yourself, build connections. Turn ideas into action. Be yourself.</p></div>
+    <div class="card"><div class="card-icon">🕵️</div><h3 data-i18n="rule3_title">Beware of Scams</h3><p data-i18n="rule3_desc">The Dlicom team will <strong>never message you first in DMs</strong>. Always verify.</p></div>
+    <div class="card"><div class="card-icon">🚀</div><h3 data-i18n="rule4_title">Community Principle</h3><p data-i18n="rule4_desc">Value is everything. The <strong>#creators</strong> channel is the most reliable way to earn a role.</p></div>
   </div>
 
-  <!-- TOKENOMICS -->
-  <div class="stitle reveal" id="tokenomics">Токено<span class="acc">мика</span></div>
+  <div class="stitle reveal" id="tokenomics">Tokeno<span class="acc">mics</span></div>
   <div class="token-wrap reveal">
     <div class="donut-box">
       <svg viewBox="0 0 260 260">
@@ -490,57 +186,59 @@ footer{border-top:1px solid var(--border);padding:28px 60px;max-width:1100px;mar
     </div>
   </div>
 
-  <div class="stitle reveal">Детали токена <span class="acc">$DLI</span></div>
+  <div class="stitle reveal">Token Details <span class="acc">$DLI</span></div>
   <table class="ttable reveal">
-    <tr><td>Стандарт</td><td>ERC-20</td></tr>
-    <tr><td>Тикер</td><td>DLI</td></tr>
-    <tr><td>Общая эмиссия</td><td>355,000,000 DLI</td></tr>
-    <tr><td>Начальная цена</td><td>$0.05 USDC</td></tr>
-    <tr><td>Начальный оборот</td><td>82,125,000 DLI</td></tr>
-    <tr><td>Начальная капитализация</td><td>$4,106,250</td></tr>
+    <tr><td data-i18n="tok_standard">Standard</td><td>ERC-20</td></tr>
+    <tr><td>Ticker</td><td>DLI</td></tr>
+    <tr><td data-i18n="tok_supply">Total Supply</td><td>355,000,000 DLI</td></tr>
+    <tr><td data-i18n="tok_price">Initial Price</td><td>$0.05 USDC</td></tr>
+    <tr><td data-i18n="tok_circ">Initial Circulation</td><td>82,125,000 DLI</td></tr>
+    <tr><td data-i18n="tok_cap">Initial Market Cap</td><td>$4,106,250</td></tr>
     <tr><td>FDV</td><td>$17,750,000</td></tr>
-    <tr><td>Пул ликвидности</td><td>2,500,000 USDC / 50,000,000 DLI</td></tr>
-    <tr><td>Вестинг</td><td>0–60 месяцев</td></tr>
+    <tr><td data-i18n="tok_lp">Liquidity Pool</td><td>2,500,000 USDC / 50,000,000 DLI</td></tr>
+    <tr><td data-i18n="tok_vest">Vesting</td><td>0–60 months</td></tr>
     <tr><td>Decimals</td><td>18</td></tr>
   </table>
 
-  <!-- TEAM -->
-  <div class="stitle reveal" id="team">Команда <span class="acc">Dlicom</span></div>
+  <div class="stitle reveal" id="team">Dlicom <span class="acc">Team</span></div>
   <div class="team-grid reveal">
-    <div class="team-card"><img class="tphoto" src="https://www.dlicom.io/_next/static/media/mohammad_qadriah.3cc25978.png" alt="Mohammad"><div class="tinfo"><h4>Mohammad Qadriah</h4><p>Chairman & Co-Founder</p></div></div>
-    <div class="team-card"><img class="tphoto" src="https://www.dlicom.io/_next/static/media/george_chahine.12081b16.png" alt="George"><div class="tinfo"><h4>George Chahine</h4><p>Head of Tokenomics</p></div></div>
-    <div class="team-card"><img class="tphoto" src="https://www.dlicom.io/_next/static/media/mohamed_alsherif.698cb3df.png" alt="Mohamed"><div class="tinfo"><h4>Mohamed Alsherif</h4><p>Community Manager</p></div></div>
-    <div class="team-card"><img class="tphoto" src="https://www.dlicom.io/_next/static/media/ahmed.1d0a9f57.png" alt="Ahmed"><div class="tinfo"><h4>Ahmed Omar</h4><p>Product Manager</p></div></div>
-    <div class="team-card"><img class="tphoto" src="https://www.dlicom.io/_next/static/media/jimish_parekh.406e29b3.png" alt="Jimish"><div class="tinfo"><h4>Jimish Parekh</h4><p>CTO</p></div></div>
     <div class="team-card">
-      <div class="tphoto mascot-avatar" style="background:linear-gradient(135deg,#0d0d1a,#0a0a20);display:flex;align-items:center;justify-content:center;aspect-ratio:1;">
-        <svg width="80%" height="80%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <!-- Glow -->
-          <defs>
-            <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#1a6fff" stop-opacity="0.5"/>
-              <stop offset="100%" stop-color="#000" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
+      <img class="tphoto" src="https://www.dlicom.io/_next/static/media/mohammad_qadriah.3cc25978.png" alt="Mohammad">
+      <div class="tinfo"><h4>Mohammad Qadriah</h4><p>Chairman &amp; Co-Founder</p></div>
+    </div>
+    <div class="team-card">
+      <img class="tphoto" src="https://www.dlicom.io/_next/static/media/george_chahine.12081b16.png" alt="George">
+      <div class="tinfo"><h4>George Chahine</h4><p>Head of Tokenomics</p></div>
+    </div>
+    <div class="team-card">
+      <img class="tphoto" src="https://www.dlicom.io/_next/static/media/mohamed_alsherif.698cb3df.png" alt="Mohamed">
+      <div class="tinfo"><h4>Mohamed Alsherif</h4><p>Community Manager</p></div>
+    </div>
+    <div class="team-card">
+      <img class="tphoto" src="https://www.dlicom.io/_next/static/media/ahmed.1d0a9f57.png" alt="Ahmed">
+      <div class="tinfo"><h4>Ahmed Omar</h4><p>Product Manager</p></div>
+    </div>
+    <div class="team-card">
+      <img class="tphoto" src="https://www.dlicom.io/_next/static/media/jimish_parekh.406e29b3.png" alt="Jimish">
+      <div class="tinfo"><h4>Jimish Parekh</h4><p>CTO</p></div>
+    </div>
+  </div>
+  <div class="team-grid-bottom reveal">
+    <div class="team-card">
+      <div class="tphoto mascot-avatar" style="background:linear-gradient(135deg,#060614,#0a0a20);display:flex;align-items:center;justify-content:center;aspect-ratio:1;">
+        <svg width="78%" height="78%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="glow1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1a6fff" stop-opacity="0.6"/><stop offset="100%" stop-color="#000" stop-opacity="0"/></radialGradient></defs>
           <circle cx="100" cy="100" r="90" fill="url(#glow1)"/>
-          <!-- Head -->
           <circle cx="100" cy="96" r="58" fill="#0a0a0a"/>
-          <!-- Mask/visor -->
           <rect x="48" y="78" width="104" height="44" rx="22" fill="#1a6fff"/>
-          <!-- Left arm -->
           <rect x="18" y="90" width="36" height="14" rx="7" fill="#1a6fff" transform="rotate(-10,36,97)"/>
-          <!-- Right arm -->
           <rect x="146" y="90" width="36" height="14" rx="7" fill="#1a6fff" transform="rotate(10,164,97)"/>
-          <!-- Eyes (diamond pixels) -->
           <rect x="68" y="92" width="18" height="18" rx="2" fill="#fff" transform="rotate(45,77,101)"/>
           <rect x="74" y="98" width="8" height="8" rx="1" fill="#0a0a0a" transform="rotate(45,78,102)"/>
           <rect x="114" y="92" width="18" height="18" rx="2" fill="#fff" transform="rotate(45,123,101)"/>
           <rect x="120" y="98" width="8" height="8" rx="1" fill="#0a0a0a" transform="rotate(45,124,102)"/>
-          <!-- Smile -->
           <path d="M88 116 Q100 124 112 116" stroke="#0a0a0a" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <!-- Chat bubble notch -->
           <polygon points="88,122 80,132 104,122" fill="#1a6fff"/>
-          <!-- SMM badge -->
           <rect x="72" y="148" width="56" height="20" rx="4" fill="#00c8ff" opacity="0.9"/>
           <text x="100" y="162" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#000">SMM</text>
         </svg>
@@ -549,32 +247,19 @@ footer{border-top:1px solid var(--border);padding:28px 60px;max-width:1100px;mar
     </div>
     <div class="team-card">
       <div class="tphoto mascot-avatar" style="background:linear-gradient(135deg,#0d0010,#0a0018);display:flex;align-items:center;justify-content:center;aspect-ratio:1;">
-        <svg width="80%" height="80%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#5b2cf0" stop-opacity="0.5"/>
-              <stop offset="100%" stop-color="#000" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
+        <svg width="78%" height="78%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="glow2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#5b2cf0" stop-opacity="0.6"/><stop offset="100%" stop-color="#000" stop-opacity="0"/></radialGradient></defs>
           <circle cx="100" cy="100" r="90" fill="url(#glow2)"/>
-          <!-- Head -->
           <circle cx="100" cy="96" r="58" fill="#0a0a0a"/>
-          <!-- Mask/visor — purple tint -->
           <rect x="48" y="78" width="104" height="44" rx="22" fill="#5b2cf0"/>
-          <!-- Left arm -->
           <rect x="18" y="90" width="36" height="14" rx="7" fill="#5b2cf0" transform="rotate(-8,36,97)"/>
-          <!-- Right arm -->
           <rect x="146" y="90" width="36" height="14" rx="7" fill="#5b2cf0" transform="rotate(8,164,97)"/>
-          <!-- Eyes (diamond pixels) -->
           <rect x="68" y="92" width="18" height="18" rx="2" fill="#fff" transform="rotate(45,77,101)"/>
           <rect x="74" y="98" width="8" height="8" rx="1" fill="#0a0a0a" transform="rotate(45,78,102)"/>
           <rect x="114" y="92" width="18" height="18" rx="2" fill="#fff" transform="rotate(45,123,101)"/>
           <rect x="120" y="98" width="8" height="8" rx="1" fill="#0a0a0a" transform="rotate(45,124,102)"/>
-          <!-- Smile - slightly wider/confident -->
           <path d="M86 115 Q100 125 114 115" stroke="#0a0a0a" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <!-- Chat bubble notch -->
           <polygon points="88,122 80,132 104,122" fill="#5b2cf0"/>
-          <!-- CMO badge -->
           <rect x="72" y="148" width="56" height="20" rx="4" fill="#a78bfa" opacity="0.9"/>
           <text x="100" y="162" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#0a0a0a">CMO</text>
         </svg>
@@ -583,44 +268,43 @@ footer{border-top:1px solid var(--border);padding:28px 60px;max-width:1100px;mar
     </div>
   </div>
 
-  <!-- FAQ -->
-  <div class="stitle reveal" id="faq">Частые <span class="acc">вопросы</span></div>
+  <div class="stitle reveal" id="faq">Frequently Asked <span class="acc">Questions</span></div>
   <div class="faq-list reveal">
-    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span>Как стать Regional Lead для русского региона?</span><span class="arrow">+</span></div><div class="faq-a">1. Заполни <a href="https://forms.gle/LT9mZUa1KyUmxrZ1A" target="_blank">форму заявки</a>. 2. В Discord выбери 🇷🇺 Russian. 3. Активно участвуй в трёх фазах (25 фев — 18 мар).</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span>Обязателен ли Dliever для участия в Regional Hunt?</span><span class="arrow">+</span></div><div class="faq-a">Нет. Dliever не обязателен для подачи заявки. Но активные участники получают его автоматически и имеют приоритет при отборе.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span>Что такое DLI токен?</span><span class="arrow">+</span></div><div class="faq-a">DLI — нативный токен Dlicom на Ethereum. Используется для: отправки крипты в чате, чаевых, оплаты газа, стейкинга с наградами в USDT, голосования.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span>Нужен ли KYC?</span><span class="arrow">+</span></div><div class="faq-a">Нет. Dlicom — полностью децентрализованный проект, работающий как DEX. KYC не требуется. Профили — на основе Ethereum адресов.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span>Что такое конкурс с маскотом Dili?</span><span class="arrow">+</span></div><div class="faq-a">Придумай историю, лор или концепцию про Дили (текст, видео, арт). Лучшие 10 идей получают роль Dliever. Публикуй в <code>#creators</code>, процитировав <a href="https://x.com/DlicomApp/status/2023744462434783676" target="_blank">пост в X</a>.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span>Как зарабатывать на платформе?</span><span class="arrow">+</span></div><div class="faq-a"><code>Стейкинг</code> — DLI в USDT. <code>Контент</code> — чаевые от подписчиков. <code>Рефералы</code> — приглашай по своему коду.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span>Можно ли подать сразу на Regional Lead, минуя Helper?</span><span class="arrow">+</span></div><div class="faq-a">Да. Подавая заявку на Regional Lead, ты автоматически становишься кандидатом и на Regional Helper.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span>Почему сейчас лучшее время для входа?</span><span class="arrow">+</span></div><div class="faq-a">Сейчас самая ранняя стадия — ни модераторов, ни лидов в регионах ещё нет. Стартовать с нуля именно сейчас — лучшее окно для получения должности Regional Lead или Helper.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span>What is the Junior Hunter role?</span><span class="arrow">+</span></div><div class="faq-a">Fill out the <a href="https://forms.gle/LT9mZUa1KyUmxrZ1A" target="_blank">application form</a> and get the Junior Hunter role — it grants access to <strong>#nominations</strong> and other private channels during the Hunt.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span>What is the difference between Regional Lead and Regional Helper?</span><span class="arrow">+</span></div><div class="faq-a"><strong>Regional Lead</strong> is the community manager of their region: growth, retention, campaigns, analytics. <strong>Regional Helper</strong> is the leader's assistant: answers questions, guides members, runs events, keeps the chat active. You can apply for Lead directly and automatically become a candidate for Helper as well.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span data-i18n="faq1_q">How to become Regional Lead?</span><span class="arrow">+</span></div><div class="faq-a" data-i18n="faq1_a">1. Fill out the <a href="https://forms.gle/LT9mZUa1KyUmxrZ1A" target="_blank">application form</a>. 2. In Discord, choose your region. 3. Actively participate in all three phases (27 Feb — 27 Mar).</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span data-i18n="faq2_q">Is Dliever required to join the Regional Hunt?</span><span class="arrow">+</span></div><div class="faq-a" data-i18n="faq2_a">No. Dliever is not required to apply. But active participants earn it automatically and have priority in selection.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span data-i18n="faq3_q">What is the DLI token?</span><span class="arrow">+</span></div><div class="faq-a" data-i18n="faq3_a">DLI is Dlicom's native token on Ethereum. Used for: sending crypto in chat, tips, gas payments, staking with USDT rewards, and voting.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span data-i18n="faq4_q">Is KYC required?</span><span class="arrow">+</span></div><div class="faq-a" data-i18n="faq4_a">No. Dlicom is a fully decentralized project operating as a DEX. No KYC required. Profiles are based on Ethereum addresses.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span data-i18n="faq5_q">What is the Dili mascot contest?</span><span class="arrow">+</span></div><div class="faq-a" data-i18n="faq5_a">Create a story, lore or concept about Dili (text, video, art). The best 10 ideas earn the Dliever role. Publish in <code>#creators</code>, quoting the <a href="https://x.com/DlicomApp/status/2023744462434783676" target="_blank">X post</a>.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span data-i18n="faq6_q">How to earn on the platform?</span><span class="arrow">+</span></div><div class="faq-a" data-i18n="faq6_a"><code>Staking</code> — DLI for USDT rewards. <code>Content</code> — tips from followers. <code>Referrals</code> — invite via your code.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span data-i18n="faq7_q">Can I apply for Regional Lead directly, skipping Helper?</span><span class="arrow">+</span></div><div class="faq-a" data-i18n="faq7_a">Yes. By applying for Regional Lead, you automatically become a candidate for Regional Helper as well.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span data-i18n="faq8_q">Why is now the best time to join?</span><span class="arrow">+</span></div><div class="faq-a" data-i18n="faq8_a">It's the earliest stage — no moderators, no leads in regions yet. Starting from zero right now is the best window to become a Regional Lead or Helper.</div></div>
   </div>
 
-  <!-- LINKS -->
-  <div class="stitle reveal">Официальные <span class="acc">ссылки</span></div>
+  <div class="stitle reveal">Official <span class="acc">Links</span></div>
   <div class="links-grid reveal">
-    <a href="https://www.dlicom.io" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span> dlicom.io</a>
-    <a href="https://whitepaper.dlicom.io" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span> Whitepaper</a>
-    <a href="https://apps.apple.com/us/app/dlicom/id6502626332" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></span> App Store</a>
-    <a href="https://play.google.com/store/search?q=dlicom&c=apps" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.22.99.14l.11-.06 11.05-6.38-2.35-2.38-9.8 8.68zM.19 1.11C.07 1.4 0 1.73 0 2.09v19.83c0 .36.07.69.19.98l.1.1 11.1-11.09v-.26L.29 1.01l-.1.1zM20.55 9.75l-2.66-1.54-2.62 2.62 2.62 2.62 2.68-1.55c.76-.44.76-1.71-.02-2.15zM3.18.24l9.8 8.68 2.35-2.38L4.28.16C3.93.07 3.49.1 3.18.24z"/></svg></span> Google Play</a>
-    <a href="https://x.com/DlicomApp" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span> X / Twitter</a>
-    <a href="https://t.me/DlicomAppOfficial" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span> Telegram Official</a>
-    <a href="https://t.me/dlicom" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span> Telegram CIS</a>
-    <a href="https://youtube.com/@DlicomApp" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span> YouTube</a>
-    <a href="https://medium.com/@dlicom" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg></span> Medium Blog</a>
-    <a href="https://reddit.com/user/DlicomApp" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span> Reddit</a>
-    <a href="https://instagram.com/dlicomapp" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></span> Instagram</a>
+    <a href="https://www.dlicom.io" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>dlicom.io</a>
+    <a href="https://whitepaper.dlicom.io" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>Whitepaper</a>
+    <a href="https://apps.apple.com/us/app/dlicom/id6502626332" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></span>App Store</a>
+    <a href="https://play.google.com/store/search?q=dlicom&c=apps" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.22.99.14l.11-.06 11.05-6.38-2.35-2.38-9.8 8.68zM.19 1.11C.07 1.4 0 1.73 0 2.09v19.83c0 .36.07.69.19.98l.1.1 11.1-11.09v-.26L.29 1.01l-.1.1zM20.55 9.75l-2.66-1.54-2.62 2.62 2.62 2.62 2.68-1.55c.76-.44.76-1.71-.02-2.15zM3.18.24l9.8 8.68 2.35-2.38L4.28.16C3.93.07 3.49.1 3.18.24z"/></svg></span>Google Play</a>
+    <a href="https://x.com/DlicomApp" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>X / Twitter</a>
+    <a href="https://t.me/DlicomAppOfficial" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span>Telegram Official</a>
+    <a href="https://t.me/dlicom" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span>Telegram CIS</a>
+    <a href="https://youtube.com/@DlicomApp" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>YouTube</a>
+    <a href="https://medium.com/@dlicom" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg></span>Medium Blog</a>
+    <a href="https://reddit.com/user/DlicomApp" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>Reddit</a>
+    <a href="https://instagram.com/dlicomapp" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></span>Instagram</a>
   </div>
 
-  <!-- CTA -->
   <div class="cta-block reveal">
     <div class="cta-text">
-      <h3>Готов стать частью RU комьюнити?</h3>
-      <p>Вступай в Discord, выбирай 🇷🇺 Russian и участвуй в Regional Hunt</p>
+      <h3 data-i18n="cta_title">Ready to join the Community Hub?</h3>
+      <p data-i18n="cta_desc">Join Discord, choose your region and participate in the Regional Hunt</p>
     </div>
     <div class="brow">
-      <a href="https://discord.gg/BmYmRXc8" target="_blank" class="btn-a">↗ Открыть Discord</a>
-      <a href="https://forms.gle/LT9mZUa1KyUmxrZ1A" target="_blank" class="btn-c">📋 Форма заявки</a>
+      <a href="https://discord.gg/BmYmRXc8" target="_blank" class="btn-a" data-i18n="cta_btn1">↗ Open Discord</a>
+      <a href="https://forms.gle/LT9mZUa1KyUmxrZ1A" target="_blank" class="btn-hunt-apply"><span data-i18n="cta_btn2">Apply Now</span></a>
     </div>
   </div>
 
@@ -629,131 +313,19 @@ footer{border-top:1px solid var(--border);padding:28px 60px;max-width:1100px;mar
 <footer>
   <div class="fbrand">
     <img src="https://i.postimg.cc/65j78jJr/imagevfyvf.png" alt="Dlicom">
-    <span>RU · Неофициальный ресурс</span>
+    <span data-i18n="footer_brand">Community Hub · Unofficial Resource</span>
   </div>
   <div class="flinks">
     <a href="https://www.dlicom.io" target="_blank">dlicom.io</a>
     <a href="https://whitepaper.dlicom.io" target="_blank">Whitepaper</a>
-    <a href="https://forms.gle/LT9mZUa1KyUmxrZ1A" target="_blank">Форма заявки</a>
+    <a href="https://forms.gle/LT9mZUa1KyUmxrZ1A" target="_blank" data-i18n="footer_apply">Application Form</a>
   </div>
-  <a href="https://discord.gg/BmYmRXc8" target="_blank" class="dlink">
+  <a href="https://discord.gg/BmYmRXc8" target="_blank" class="dlink" data-i18n="footer_discord">
     <svg width="16" height="12" viewBox="0 0 71 55" fill="none"><path d="M60.1 4.9A58.6 58.6 0 0 0 45.5.4a.2.2 0 0 0-.2.1 40.8 40.8 0 0 0-1.8 3.7 54.1 54.1 0 0 0-16.2 0A37.7 37.7 0 0 0 25.5.5a.2.2 0 0 0-.2-.1A58.5 58.5 0 0 0 10.6 4.9a.2.2 0 0 0-.1.1C1.6 18.1-.9 31 .3 43.7a.2.2 0 0 0 .1.2 58.9 58.9 0 0 0 17.7 8.9.2.2 0 0 0 .2-.1 42 42 0 0 0 3.6-5.9.2.2 0 0 0-.1-.3 38.8 38.8 0 0 1-5.5-2.6.2.2 0 0 1 0-.4c.4-.3.7-.6 1.1-.8a.2.2 0 0 1 .2 0c11.5 5.2 23.9 5.2 35.3 0a.2.2 0 0 1 .2 0c.4.3.7.5 1.1.8a.2.2 0 0 1 0 .4 36.1 36.1 0 0 1-5.5 2.6.2.2 0 0 0-.1.3 47.1 47.1 0 0 0 3.6 5.9.2.2 0 0 0 .2.1 58.7 58.7 0 0 0 17.8-8.9.2.2 0 0 0 .1-.2c1.5-15-2.5-27.8-10.4-39.3a.2.2 0 0 0-.1-.1zM23.7 36c-3.5 0-6.4-3.2-6.4-7.1s2.8-7.1 6.4-7.1c3.6 0 6.5 3.2 6.4 7.1 0 3.9-2.8 7.1-6.4 7.1zm23.6 0c-3.5 0-6.4-3.2-6.4-7.1s2.8-7.1 6.4-7.1c3.6 0 6.5 3.2 6.4 7.1 0 3.9-2.8 7.1-6.4 7.1z" fill="currentColor"/></svg>
-    Присоединиться к серверу
+    Join the Server
   </a>
 </footer>
 
-<script>
-// CURSOR
-const cur=document.getElementById('cur'),cring=document.getElementById('cring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=(mx-3)+'px';cur.style.top=(my-3)+'px';});
-(function aR(){rx+=(mx-rx-14)*0.1;ry+=(my-ry-14)*0.1;cring.style.left=rx+'px';cring.style.top=ry+'px';requestAnimationFrame(aR);})();
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.transform='scale(3)';cring.style.borderColor='rgba(0,200,255,0.8)';});
-  el.addEventListener('mouseleave',()=>{cur.style.transform='scale(1)';cring.style.borderColor='rgba(0,200,255,0.5)';});
-});
-
-// THREE.JS — 3D GEMS
-(function initThree(){
-  const canvas=document.getElementById('threeCanvas');
-  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-  renderer.setClearColor(0x000000,1);
-
-  const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(45,canvas.clientWidth/canvas.clientHeight,0.1,100);
-  camera.position.z=8;
-
-  function resize(){
-    const w=canvas.clientWidth,h=canvas.clientHeight;
-    renderer.setSize(w,h,false);
-    camera.aspect=w/h;camera.updateProjectionMatrix();
-  }
-  resize();window.addEventListener('resize',resize);
-
-  // Gem geometry — octahedron base modified into crystal
-  function makeCrystal(color1,color2){
-    const group=new THREE.Group();
-    // Main body
-    const geo=new THREE.OctahedronGeometry(1.2,0);
-    // Stretch vertically to look like crystal
-    geo.scale(0.7,1.4,0.7);
-    const mat=new THREE.MeshPhongMaterial({color:color1,transparent:true,opacity:0.85,shininess:200,specular:new THREE.Color(0xffffff),wireframe:false});
-    const mesh=new THREE.Mesh(geo,mat);
-    group.add(mesh);
-    // Wireframe overlay
-    const wmat=new THREE.MeshBasicMaterial({color:color2,wireframe:true,transparent:true,opacity:0.25});
-    const wmesh=new THREE.Mesh(geo.clone(),wmat);
-    wmesh.scale.set(1.02,1.02,1.02);
-    group.add(wmesh);
-    return group;
-  }
-
-  // Ambient + directional lights
-  scene.add(new THREE.AmbientLight(0x111133,2));
-  const dl1=new THREE.DirectionalLight(0x1a6fff,4);
-  dl1.position.set(2,3,2);scene.add(dl1);
-  const dl2=new THREE.DirectionalLight(0x00c8ff,3);
-  dl2.position.set(-2,-1,1);scene.add(dl2);
-  const dl3=new THREE.DirectionalLight(0x5b2cf0,2);
-  dl3.position.set(0,2,-2);scene.add(dl3);
-
-  // Left gem — blue/cyan
-  const gemL=makeCrystal(0x1a6fff,0x00c8ff);
-  gemL.position.set(-5.5,0,0);
-  gemL.scale.set(1.4,1.4,1.4);
-  scene.add(gemL);
-
-  // Right gem — purple/blue
-  const gemR=makeCrystal(0x5b2cf0,0xa78bfa);
-  gemR.position.set(5.5,0,0);
-  gemR.scale.set(1.2,1.2,1.2);
-  scene.add(gemR);
-
-  // Small floating gems scattered
-  const smallColors=[[0x00c8ff,0x1a6fff],[0x5b2cf0,0xec4899],[0x1a6fff,0x5b2cf0]];
-  const smalls=[];
-  smallColors.forEach((c,i)=>{
-    const g=makeCrystal(c[0],c[1]);
-    const side=i%2===0?-1:1;
-    g.position.set(side*(3+i*0.8),(i-1)*1.5,-1);
-    g.scale.set(0.4,0.4,0.4);
-    scene.add(g);
-    smalls.push({mesh:g,speed:0.3+i*0.1,offset:i*2});
-  });
-
-  let t=0;
-  function animate(){
-    requestAnimationFrame(animate);
-    t+=0.008;
-
-    gemL.rotation.y=t*0.4;
-    gemL.rotation.x=Math.sin(t*0.3)*0.2;
-    gemL.position.y=Math.sin(t*0.5)*0.3;
-
-    gemR.rotation.y=-t*0.35;
-    gemR.rotation.x=Math.cos(t*0.25)*0.15;
-    gemR.position.y=Math.cos(t*0.45)*0.3;
-
-    smalls.forEach(s=>{
-      s.mesh.rotation.y+=0.01*s.speed;
-      s.mesh.rotation.x+=0.007*s.speed;
-      s.mesh.position.y+=Math.sin(t*s.speed+s.offset)*0.003;
-    });
-
-    renderer.render(scene,camera);
-  }
-  animate();
-})();
-
-// FAQ
-function toggle(el){el.parentElement.classList.toggle('open');}
-
-// SCROLL REVEAL
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('vis'),i*60);});
-},{threshold:0.06});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-</script>
+<script src="script.js"></script>
 </body>
 </html>
