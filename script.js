@@ -166,7 +166,15 @@ const translations = {
     faq7_q:'Can I apply for Regional Lead directly, skipping Helper?', faq7_a:'Yes. By applying for Regional Lead, you automatically become a candidate for Regional Helper as well.',
     faq8_q:'Why is now the best time to join?', faq8_a:'It\'s the earliest stage — no moderators, no leads in regions yet. Starting from zero right now is the best window to become a Regional Lead or Helper.',
     cta_title:'Ready to join the Community Hub?', cta_desc:'Join Discord, choose your region and participate in the Regional Hunt', cta_btn1:'↗ Open Discord', cta_btn2:'Apply Now',
-    footer_brand:'Community Hub · Unofficial Resource', footer_apply:'Application Form', footer_discord:'Join the Server'
+    footer_brand:'Community Hub · Unofficial Resource', footer_apply:'Application Form', footer_discord:'Join the Server',
+    news_badge_new:'NEW', news_badge_phase1:'PHASE 1', news_badge_info:'INFO',
+    news_tag_announce:'📣 Announcement', news_tag_hunt:'🏹 Hunt', news_tag_creators:'🎨 Creators',
+    news1_title:'📌 #content-spotlight — raid selection',
+    news1_body:'A new channel <strong>#content-spotlight</strong> has appeared in Discord — a dedicated showcase for the best community content. Moderators will hand-pick creators\' posts and feature them there, then organize a full raid on the top works. If your post makes it into <strong>#content-spotlight</strong>, the team considers it worthy of maximum reach. This is your chance to stand out among hundreds of Hunt participants and get on the team\'s radar. Post, put in the effort — and the next raid might just be on you.',
+    news2_title:'🚀 Regional Hunt launched',
+    news2_body:'Applications for Regional Lead and Regional Helper are now officially open. The <strong>#nominations</strong> channel is unlocked for Junior Hunter role holders. Apply now and be among the first.',
+    news3_title:'🎭 Dili lore contest',
+    news3_body:'Create a story, art or concept about the Dili mascot. The best 10 entries automatically earn the <strong>Dliever</strong> role. Post in <code>#creators</code> quoting the official X post.'
   },
   ru: {
     nav_sub:'Community Hub', nav_about:'О проекте', nav_roles:'Роли', nav_token:'Токен', nav_team:'Команда',
@@ -205,7 +213,15 @@ const translations = {
     faq7_q:'Можно ли подать сразу на Regional Lead, минуя Helper?', faq7_a:'Да. Подавая заявку на Regional Lead, ты автоматически становишься кандидатом и на Regional Helper.',
     faq8_q:'Почему сейчас лучшее время для входа?', faq8_a:'Сейчас самая ранняя стадия — ни модераторов, ни лидов в регионах ещё нет. Стартовать с нуля именно сейчас — лучшее окно для получения должности Regional Lead или Helper.',
     cta_title:'Готов стать частью Community Hub?', cta_desc:'Вступай в Discord, выбирай регион и участвуй в Regional Hunt', cta_btn1:'↗ Открыть Discord', cta_btn2:'Подать заявку',
-    footer_brand:'Community Hub · Неофициальный ресурс', footer_apply:'Форма заявки', footer_discord:'Присоединиться к серверу'
+    footer_brand:'Community Hub · Неофициальный ресурс', footer_apply:'Форма заявки', footer_discord:'Присоединиться к серверу',
+    news_badge_new:'НОВОЕ', news_badge_phase1:'ФАЗА 1', news_badge_info:'ИНФО',
+    news_tag_announce:'📣 Объявление', news_tag_hunt:'🏹 Хант', news_tag_creators:'🎨 Крейторы',
+    news1_title:'📌 #content-spotlight — отбор в рейд',
+    news1_body:'В Discord появился новый канал <strong>#content-spotlight</strong> — специальная витрина для лучших материалов сообщества. Модераторы будут вручную отбирать контент авторов и публиковать его там, чтобы затем провести полноценный рейд на лучшие работы. Если твой пост попал в <strong>#content-spotlight</strong> — значит, команда считает его достойным максимального охвата. Это шанс выделиться среди сотен участников Hunt и попасть на радар тиму. Публикуй, старайся, и, возможно, следующий рейд будет именно на тебя.',
+    news2_title:'🚀 Regional Hunt стартовал',
+    news2_body:'Официально открылся набор на роли Regional Lead и Regional Helper. Канал <strong>#nominations</strong> разблокирован для участников с ролью Junior Hunter. Подай заявку — и попади в историю первых.',
+    news3_title:'🎭 Конкурс лора Dili',
+    news3_body:'Создай историю, арт или концепцию о маскоте Dili. Лучшие 10 работ получают роль <strong>Dliever</strong> автоматически. Публикуй в <code>#creators</code> с цитатой официального X-поста.'
   },
   ar: {
     nav_sub:'مركز المجتمع', nav_about:'عن المشروع', nav_roles:'الأدوار', nav_token:'الرمز', nav_team:'الفريق',
@@ -244,7 +260,15 @@ const translations = {
     faq7_q:'هل يمكن التقدم لـ Regional Lead مباشرة?', faq7_a:'نعم، وتصبح مرشحاً لـ Helper تلقائياً.',
     faq8_q:'لماذا الآن أفضل وقت؟', faq8_a:'لا مشرفين، لا قادة بعد. ابدأ الآن.',
     cta_title:'هل أنت مستعد للانضمام؟', cta_desc:'انضم إلى Discord واختر منطقتك', cta_btn1:'↗ فتح Discord', cta_btn2:'تقدم الآن',
-    footer_brand:'Community Hub · مورد غير رسمي', footer_apply:'نموذج التقديم', footer_discord:'انضم إلى السيرفر'
+    footer_brand:'Community Hub · مورد غير رسمي', footer_apply:'نموذج التقديم', footer_discord:'انضم إلى السيرفر',
+    news_badge_new:'جديد', news_badge_phase1:'المرحلة 1', news_badge_info:'معلومات',
+    news_tag_announce:'📣 إعلان', news_tag_hunt:'🏹 هانت', news_tag_creators:'🎨 المبدعون',
+    news1_title:'📌 #content-spotlight — اختيار المداهمة',
+    news1_body:'ظهرت قناة جديدة في Discord <strong>#content-spotlight</strong> — واجهة مخصصة لأفضل محتوى المجتمع. سيختار المشرفون يدوياً منشورات المبدعين وينشرونها هناك، ثم ينظمون مداهمة كاملة على أفضل الأعمال. إذا وصل منشورك إلى <strong>#content-spotlight</strong>، فهذا يعني أن الفريق يعتبره يستحق أقصى وصول. فرصتك للتميز بين مئات المشاركين في Hunt. انشر، اجتهد — وربما تكون المداهمة التالية عليك.',
+    news2_title:'🚀 انطلق Regional Hunt',
+    news2_body:'فُتح رسمياً التقديم على أدوار Regional Lead وRegional Helper. قناة <strong>#nominations</strong> مفتوحة لحاملي دور Junior Hunter. تقدم الآن وكن من الأوائل.',
+    news3_title:'🎭 مسابقة لور Dili',
+    news3_body:'أنشئ قصة أو فناً أو مفهوماً عن تميمة Dili. أفضل 10 أعمال تحصل تلقائياً على دور <strong>Dliever</strong>. انشر في <code>#creators</code> مع اقتباس منشور X الرسمي.'
   },
   uk: {
     nav_sub:'Community Hub', nav_about:'Про проект', nav_roles:'Ролі', nav_token:'Токен', nav_team:'Команда',
@@ -283,7 +307,15 @@ const translations = {
     faq7_q:'Чи можна подати одразу на Regional Lead?', faq7_a:'Так, і стаєш кандидатом на Helper автоматично.',
     faq8_q:'Чому зараз найкращий час?', faq8_a:'Найрання стадія — ні лідів, ні модів. Найкраще вікно зараз.',
     cta_title:'Готовий приєднатися?', cta_desc:'Вступай до Discord, обери регіон і бери участь у Regional Hunt', cta_btn1:'↗ Відкрити Discord', cta_btn2:'Подати заявку',
-    footer_brand:'Community Hub · Неофіційний ресурс', footer_apply:'Форма заявки', footer_discord:'Приєднатися до сервера'
+    footer_brand:'Community Hub · Неофіційний ресурс', footer_apply:'Форма заявки', footer_discord:'Приєднатися до сервера',
+    news_badge_new:'НОВЕ', news_badge_phase1:'ФАЗА 1', news_badge_info:'ІНФО',
+    news_tag_announce:'📣 Оголошення', news_tag_hunt:'🏹 Хант', news_tag_creators:'🎨 Крейтори',
+    news1_title:'📌 #content-spotlight — відбір до рейду',
+    news1_body:'У Discord з\'явився новий канал <strong>#content-spotlight</strong> — спеціальна вітрина для найкращих матеріалів спільноти. Модератори вручну відбиратимуть контент авторів і публікуватимуть його там, щоб потім провести повноцінний рейд на кращі роботи. Якщо твій пост потрапив до <strong>#content-spotlight</strong> — значить, команда вважає його гідним максимального охоплення. Це шанс виділитися серед сотень учасників Hunt і потрапити на радар тиму. Публікуй, старайся — і, можливо, наступний рейд буде саме на тебе.',
+    news2_title:'🚀 Regional Hunt стартував',
+    news2_body:'Офіційно відкрився набір на ролі Regional Lead і Regional Helper. Канал <strong>#nominations</strong> розблокований для учасників з роллю Junior Hunter. Подай заявку — і потрап в історію перших.',
+    news3_title:'🎭 Конкурс лору Dili',
+    news3_body:'Створи історію, арт або концепцію про маскота Dili. Найкращі 10 робіт отримують роль <strong>Dliever</strong> автоматично. Публікуй у <code>#creators</code> з цитатою офіційного X-посту.'
   },
   vi: {
     nav_sub:'Community Hub', nav_about:'Về dự án', nav_roles:'Vai trò', nav_token:'Token', nav_team:'Đội ngũ',
@@ -322,7 +354,15 @@ const translations = {
     faq7_q:'Có thể đăng ký Regional Lead trực tiếp?', faq7_a:'Có, và tự động là ứng viên Helper.',
     faq8_q:'Tại sao bây giờ là tốt nhất?', faq8_a:'Giai đoạn sớm nhất — chưa có mod hay lead.',
     cta_title:'Sẵn sàng tham gia?', cta_desc:'Tham gia Discord và chọn khu vực của bạn', cta_btn1:'↗ Mở Discord', cta_btn2:'Đăng ký ngay',
-    footer_brand:'Community Hub · Tài nguyên không chính thức', footer_apply:'Mẫu đăng ký', footer_discord:'Tham gia Server'
+    footer_brand:'Community Hub · Tài nguyên không chính thức', footer_apply:'Mẫu đăng ký', footer_discord:'Tham gia Server',
+    news_badge_new:'MỚI', news_badge_phase1:'GIAI ĐOẠN 1', news_badge_info:'THÔNG TIN',
+    news_tag_announce:'📣 Thông báo', news_tag_hunt:'🏹 Hunt', news_tag_creators:'🎨 Sáng tạo',
+    news1_title:'📌 #content-spotlight — tuyển chọn raid',
+    news1_body:'Một kênh mới <strong>#content-spotlight</strong> đã xuất hiện trong Discord — nơi trưng bày những nội dung tốt nhất của cộng đồng. Các moderator sẽ tự tay chọn lọc bài đăng của các tác giả và đăng ở đó, sau đó tổ chức raid toàn diện vào những tác phẩm xuất sắc nhất. Nếu bài của bạn vào <strong>#content-spotlight</strong> — nghĩa là nhóm coi đó xứng đáng với phạm vi tiếp cận tối đa. Đây là cơ hội để nổi bật trong hàng trăm người tham gia Hunt. Hãy đăng và cố gắng — raid tiếp theo có thể dành cho bạn!',
+    news2_title:'🚀 Regional Hunt khởi động',
+    news2_body:'Đã mở chính thức đơn đăng ký vai Regional Lead và Regional Helper. Kênh <strong>#nominations</strong> được mở khóa cho người có vai Junior Hunter. Đăng ký ngay và trở thành người đầu tiên.',
+    news3_title:'🎭 Cuộc thi lore Dili',
+    news3_body:'Tạo câu chuyện, nghệ thuật hoặc khái niệm về linh vật Dili. 10 tác phẩm tốt nhất tự động nhận vai <strong>Dliever</strong>. Đăng trong <code>#creators</code> kèm trích dẫn bài đăng X chính thức.'
   },
   hi: {
     nav_sub:'Community Hub', nav_about:'परियोजना', nav_roles:'भूमिकाएं', nav_token:'टोकन', nav_team:'टीम',
@@ -361,7 +401,15 @@ const translations = {
     faq7_q:'सीधे Regional Lead?', faq7_a:'हां, Helper के लिए भी स्वतः उम्मीदवार।',
     faq8_q:'अभी क्यों सबसे अच्छा?', faq8_a:'कोई लीड नहीं, कोई मॉड नहीं अभी।',
     cta_title:'Community Hub से जुड़ने के लिए तैयार?', cta_desc:'Discord से जुड़ें, अपना क्षेत्र चुनें', cta_btn1:'↗ Discord खोलें', cta_btn2:'आवेदन करें',
-    footer_brand:'Community Hub · अनौपचारिक', footer_apply:'आवेदन फॉर्म', footer_discord:'सर्वर से जुड़ें'
+    footer_brand:'Community Hub · अनौपचारिक', footer_apply:'आवेदन फॉर्म', footer_discord:'सर्वर से जुड़ें',
+    news_badge_new:'नया', news_badge_phase1:'चरण 1', news_badge_info:'जानकारी',
+    news_tag_announce:'📣 घोषणा', news_tag_hunt:'🏹 हंट', news_tag_creators:'🎨 क्रिएटर्स',
+    news1_title:'📌 #content-spotlight — रेड चयन',
+    news1_body:'Discord में एक नया चैनल <strong>#content-spotlight</strong> आया है — समुदाय की सर्वश्रेष्ठ सामग्री के लिए एक विशेष शोकेस। मॉडरेटर क्रिएटर्स के पोस्ट को मैन्युअली चुनकर वहाँ प्रकाशित करेंगे, फिर शीर्ष कार्यों पर पूर्ण रेड आयोजित करेंगे। अगर आपका पोस्ट <strong>#content-spotlight</strong> में आया — टीम इसे अधिकतम पहुँच के योग्य मानती है। Hunt के सैकड़ों प्रतिभागियों में से अलग दिखने का यही मौका है। पोस्ट करो, कोशिश करो — अगला रेड शायद तुम्हारे लिए हो!',
+    news2_title:'🚀 Regional Hunt लॉन्च',
+    news2_body:'Regional Lead और Regional Helper के लिए आवेदन आधिकारिक रूप से खुले हैं। <strong>#nominations</strong> चैनल Junior Hunter भूमिका वालों के लिए अनलॉक है। अभी आवेदन करें और पहलों में शामिल हों।',
+    news3_title:'🎭 Dili लोर प्रतियोगिता',
+    news3_body:'Dili मास्कॉट के बारे में एक कहानी, कला या अवधारणा बनाएँ। सर्वश्रेष्ठ 10 प्रविष्टियाँ स्वचालित रूप से <strong>Dliever</strong> भूमिका प्राप्त करती हैं। आधिकारिक X पोस्ट उद्धृत करते हुए <code>#creators</code> में पोस्ट करें।'
   },
   ng: {
     nav_sub:'Community Hub', nav_about:'About', nav_roles:'Roles', nav_token:'Token', nav_team:'Team',
@@ -400,7 +448,15 @@ const translations = {
     faq7_q:'Can apply Regional Lead direct?', faq7_a:'Yes, and become Helper candidate automatic.',
     faq8_q:'Why now be best time?', faq8_a:'No leads, no mods yet. Start now.',
     cta_title:'You ready join Community Hub?', cta_desc:'Enter Discord and choose your region', cta_btn1:'↗ Open Discord', cta_btn2:'Apply Now',
-    footer_brand:'Community Hub · Unofficial', footer_apply:'Application Form', footer_discord:'Join Server'
+    footer_brand:'Community Hub · Unofficial', footer_apply:'Application Form', footer_discord:'Join Server',
+    news_badge_new:'NEW', news_badge_phase1:'PHASE 1', news_badge_info:'INFO',
+    news_tag_announce:'📣 Announcement', news_tag_hunt:'🏹 Hunt', news_tag_creators:'🎨 Creators',
+    news1_title:'📌 #content-spotlight — raid selection',
+    news1_body:'New channel don appear for Discord — <strong>#content-spotlight</strong>. Na special place where moderators go handpick the best content from creators and post am there, then organise full raid on the top works. If your post enter <strong>#content-spotlight</strong>, the team don see say e worth maximum reach. Na your chance to shine among hundreds of Hunt people. Post your thing, try your best — next raid fit be on you!',
+    news2_title:'🚀 Regional Hunt don launch',
+    news2_body:'Applications for Regional Lead and Regional Helper don open officially. <strong>#nominations</strong> channel don unlock for Junior Hunter role holders. Apply now and be among the first.',
+    news3_title:'🎭 Dili lore contest',
+    news3_body:'Create story, art or concept about the Dili mascot. The best 10 go automatically collect <strong>Dliever</strong> role. Post for <code>#creators</code> with quote from the official X post.'
   }
 };
 
