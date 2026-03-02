@@ -16,7 +16,7 @@
 
 <nav>
   <a href="#" class="nlogo">
-    <img src="https://i.postimg.cc/65j78jJr/imagevfyvf.png" alt="Dlicom">
+    <img src="logoicon.png" alt="Dlicom" onerror="this.src='https://i.postimg.cc/65j78jJr/imagevfyvf.png'">
     <div><div class="nlogo-text">DLICOM</div><div class="nlogo-sub" data-i18n="nav_sub">Community Hub</div></div>
   </a>
   <div class="nlinks">
@@ -71,7 +71,41 @@
 <main>
 
   <div class="mascot-strip reveal">
-    <img src="https://www.dlicom.io/_next/static/media/dili.6c7c7da4.png" alt="Dili" onerror="this.src='https://i.postimg.cc/65j78jJr/imagevfyvf.png'">
+    <svg width="72" height="72" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;filter:drop-shadow(0 0 16px rgba(91,44,240,0.7))">
+      <defs>
+        <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#3333cc" stop-opacity="0.7"/>
+          <stop offset="60%" stop-color="#1a1aaa" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#000010" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="headGrad" cx="50%" cy="40%" r="55%">
+          <stop offset="0%" stop-color="#111133"/>
+          <stop offset="100%" stop-color="#050510"/>
+        </radialGradient>
+      </defs>
+      <!-- Glow background -->
+      <circle cx="100" cy="100" r="96" fill="url(#bgGlow)"/>
+      <!-- Head / body dark sphere -->
+      <circle cx="100" cy="100" r="72" fill="url(#headGrad)"/>
+      <!-- Left arm -->
+      <rect x="8" y="90" width="42" height="16" rx="8" fill="#4040ee" transform="rotate(-12 29 98)"/>
+      <!-- Right arm -->
+      <rect x="150" y="90" width="42" height="16" rx="8" fill="#4040ee" transform="rotate(12 171 98)"/>
+      <!-- Face mask / visor -->
+      <rect x="42" y="78" width="116" height="50" rx="25" fill="#4040ee"/>
+      <!-- Mask bottom notch (speech bubble tail) -->
+      <polygon points="100,128 88,128 94,148" fill="#4040ee"/>
+      <!-- Left eye white diamond -->
+      <rect x="60" y="88" width="22" height="22" rx="2" fill="white" transform="rotate(45 71 99)"/>
+      <!-- Left eye pupil -->
+      <rect x="65" y="94" width="12" height="12" rx="1" fill="#111133" transform="rotate(45 71 100)"/>
+      <!-- Right eye white diamond -->
+      <rect x="118" y="88" width="22" height="22" rx="2" fill="white" transform="rotate(45 129 99)"/>
+      <!-- Right eye pupil -->
+      <rect x="123" y="94" width="12" height="12" rx="1" fill="#111133" transform="rotate(45 129 100)"/>
+      <!-- Smile -->
+      <path d="M87 117 Q100 127 113 117" stroke="#111133" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    </svg>
     <div class="mascot-text">
       <div class="mascot-title" data-i18n="mascot_title">Meet Dili</div>
       <p data-i18n="mascot_desc">The official Dlicom mascot — the face of SocialFi. Create a story, lore or concept about him and earn the <strong>Dliever</strong> role. Any format: text, video, art.</p>
@@ -172,7 +206,7 @@
         <circle cx="130" cy="130" r="90" fill="none" stroke="#ec4899" stroke-width="36" stroke-dasharray="17 547.3" stroke-dashoffset="-460.8"/>
         <circle cx="130" cy="130" r="90" fill="none" stroke="#f59e0b" stroke-width="36" stroke-dasharray="5.7 558.6" stroke-dashoffset="-477.8"/>
       </svg>
-      <div class="donut-center"><img src="https://i.postimg.cc/65j78jJr/imagevfyvf.png" alt="DLI"></div>
+      <div class="donut-center"><img src="logoicon.png" alt="DLI" onerror="this.src='https://i.postimg.cc/65j78jJr/imagevfyvf.png'"></div>
     </div>
     <div class="legend">
       <div class="lrow"><div class="ldot" style="background:#3b82f6"></div> Network Sale <span class="lpct">41.83%</span></div>
@@ -350,7 +384,7 @@
 
 <footer>
   <div class="fbrand">
-    <img src="https://i.postimg.cc/65j78jJr/imagevfyvf.png" alt="Dlicom">
+    <img src="logoicon.png" alt="Dlicom" onerror="this.src='https://i.postimg.cc/65j78jJr/imagevfyvf.png'">
     <span data-i18n="footer_brand">Community Hub · Unofficial Resource</span>
   </div>
   <div class="flinks">

@@ -15,8 +15,26 @@ body{font-family:'Onest',sans-serif;background:var(--black);color:var(--text);ov
 a,button,label,input,select,textarea,[onclick],[role="button"]{cursor:none !important;}
 
 /* CURSOR */
-#cur{position:fixed;width:6px;height:6px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference;}
-#cring{position:fixed;width:28px;height:28px;border:1px solid rgba(0,200,255,0.5);border-radius:50%;pointer-events:none;z-index:9998;transition:border-color 0.2s;}
+/* CURSOR — diamond dot + diamond outline ring */
+#cur{
+  position:fixed;
+  width:8px;height:8px;
+  background:var(--blue);
+  transform:rotate(45deg);
+  pointer-events:none;
+  z-index:9999;
+  box-shadow:0 0 6px var(--blue),0 0 14px rgba(26,111,255,0.35);
+  transition:background 0.15s,box-shadow 0.15s,width 0.15s,height 0.15s;
+}
+#cring{
+  position:fixed;
+  width:22px;height:22px;
+  border:1.5px solid rgba(26,111,255,0.55);
+  transform:rotate(45deg);
+  pointer-events:none;
+  z-index:9998;
+  transition:border-color 0.2s,width 0.15s,height 0.15s;
+}
 
 /* NAV */
 nav{
