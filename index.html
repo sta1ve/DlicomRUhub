@@ -13,7 +13,6 @@
 <div id="cur"></div>
 <div id="cring"></div>
 
-
 <nav>
   <a href="#" class="nlogo">
     <img src="logoicon.png" alt="Dlicom" onerror="this.src='https://i.postimg.cc/65j78jJr/imagevfyvf.png'">
@@ -21,13 +20,13 @@
   </a>
   <div class="nlinks">
     <a href="#about" data-i18n="nav_about">About</a>
-    <a href="#hunt">Hunt</a>
+    <a href="#hunt" data-i18n="nav_hunt">Hunt</a>
     <a href="#roles" data-i18n="nav_roles">Roles</a>
     <a href="#tokenomics" data-i18n="nav_token">Token</a>
     <a href="#team" data-i18n="nav_team">Team</a>
-    <a href="#news">News</a>
+    <a href="#news" data-i18n="nav_news">News</a>
     <a href="#faq">FAQ</a>
-    <a href="https://discord.gg/BmYmRXc8" target="_blank" class="ncta">↗ Discord</a>
+    <a href="https://discord.gg/BmYmRXc8" target="_blank" class="ncta" data-i18n="nav_discord">↗ Discord</a>
     <div class="lang-switcher">
       <button class="lang-btn" id="langBtn"><span class="lang-flag">🌐</span> <span id="langLabel">EN</span> ▾</button>
       <div class="lang-dropdown" id="langDropdown">
@@ -37,7 +36,6 @@
         <div class="lang-option" data-lang="uk">🇺🇦 Українська</div>
         <div class="lang-option" data-lang="vi">🇻🇳 Tiếng Việt</div>
         <div class="lang-option" data-lang="hi">🇮🇳 हिन्दी</div>
-        <div class="lang-option" data-lang="ng">🇳🇬 Naija</div>
       </div>
     </div>
   </div>
@@ -48,10 +46,7 @@
   <div class="hero-content">
     <div class="htag" data-i18n="hero_tag">🌍 Global Community</div>
     <div class="heyebrow">Dlicom Protocol</div>
-    <h1 class="hero-h1">
-      COMMUNITY<br>
-      <span class="accent-word">HUB</span>
-    </h1>
+    <h1 class="hero-h1">COMMUNITY<br><span class="accent-word">HUB</span></h1>
     <p class="hero-sub" data-i18n="hero_sub">Everything about <strong>Dlicom</strong> — a decentralized platform with DeFi, crypto wallet and social network. Guides, FAQ and news for the global community.</p>
     <div class="hbtns">
       <a href="https://discord.gg/BmYmRXc8" target="_blank" class="btn-a" data-i18n="hero_btn1">↗ Join Discord</a>
@@ -64,7 +59,7 @@
 <div class="stats-bar">
   <div class="si"><span class="sn">DLI</span><span class="sl" data-i18n="stat_token">Token</span></div>
   <div class="si"><span class="sn">Web<span>3</span></span><span class="sl" data-i18n="stat_platform">Platform</span></div>
-  <div class="si"><span class="sn">355<span>M</span></span><span class="sl">Total Supply</span></div>
+  <div class="si"><span class="sn">355<span>M</span></span><span class="sl" data-i18n="stat_supply">Total Supply</span></div>
   <div class="si"><span class="sn">ERC<span>-20</span></span><span class="sl" data-i18n="stat_standard">Standard</span></div>
 </div>
 
@@ -73,37 +68,19 @@
   <div class="mascot-strip reveal">
     <svg width="72" height="72" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;filter:drop-shadow(0 0 16px rgba(91,44,240,0.7))">
       <defs>
-        <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#3333cc" stop-opacity="0.7"/>
-          <stop offset="60%" stop-color="#1a1aaa" stop-opacity="0.4"/>
-          <stop offset="100%" stop-color="#000010" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="headGrad" cx="50%" cy="40%" r="55%">
-          <stop offset="0%" stop-color="#111133"/>
-          <stop offset="100%" stop-color="#050510"/>
-        </radialGradient>
+        <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#3333cc" stop-opacity="0.7"/><stop offset="60%" stop-color="#1a1aaa" stop-opacity="0.4"/><stop offset="100%" stop-color="#000010" stop-opacity="0"/></radialGradient>
+        <radialGradient id="headGrad" cx="50%" cy="40%" r="55%"><stop offset="0%" stop-color="#111133"/><stop offset="100%" stop-color="#050510"/></radialGradient>
       </defs>
-      <!-- Glow background -->
       <circle cx="100" cy="100" r="96" fill="url(#bgGlow)"/>
-      <!-- Head / body dark sphere -->
       <circle cx="100" cy="100" r="72" fill="url(#headGrad)"/>
-      <!-- Left arm -->
       <rect x="8" y="90" width="42" height="16" rx="8" fill="#4040ee" transform="rotate(-12 29 98)"/>
-      <!-- Right arm -->
       <rect x="150" y="90" width="42" height="16" rx="8" fill="#4040ee" transform="rotate(12 171 98)"/>
-      <!-- Face mask / visor -->
       <rect x="42" y="78" width="116" height="50" rx="25" fill="#4040ee"/>
-      <!-- Mask bottom notch (speech bubble tail) -->
       <polygon points="100,128 88,128 94,148" fill="#4040ee"/>
-      <!-- Left eye white diamond -->
       <rect x="60" y="88" width="22" height="22" rx="2" fill="white" transform="rotate(45 71 99)"/>
-      <!-- Left eye pupil -->
       <rect x="65" y="94" width="12" height="12" rx="1" fill="#111133" transform="rotate(45 71 100)"/>
-      <!-- Right eye white diamond -->
       <rect x="118" y="88" width="22" height="22" rx="2" fill="white" transform="rotate(45 129 99)"/>
-      <!-- Right eye pupil -->
       <rect x="123" y="94" width="12" height="12" rx="1" fill="#111133" transform="rotate(45 129 100)"/>
-      <!-- Smile -->
       <path d="M87 117 Q100 127 113 117" stroke="#111133" stroke-width="3.5" fill="none" stroke-linecap="round"/>
     </svg>
     <div class="mascot-text">
@@ -113,14 +90,14 @@
     <a href="https://www.figma.com/design/JLmiIppBpTUqUszsvyy5ur/Dlicom-branding?node-id=61-2819" target="_blank" class="btn-b" style="white-space:nowrap;font-size:14px;padding:11px 24px;" data-i18n="mascot_btn">Branding →</a>
   </div>
 
-  <div class="stitle reveal">What is <span class="acc">Dlicom</span></div>
+  <div class="stitle reveal" data-i18n="sec_what">What is <span class="acc">Dlicom</span></div>
   <div class="grid-3 reveal">
     <div class="card"><div class="card-num">01</div><h3 data-i18n="feat1_title">Social Network</h3><p data-i18n="feat1_desc">Publish posts, chat in encrypted messages, earn tips in DLI tokens. A censorship-resistant alternative to traditional social networks.</p></div>
     <div class="card"><div class="card-num">02</div><h3 data-i18n="feat2_title">Crypto Wallet</h3><p data-i18n="feat2_desc">Self-custody wallet with crypto and NFT support. Best-rate swaps, pay gas fees with DLI tokens, send directly in chat.</p></div>
-    <div class="card"><div class="card-num">03</div><h3 data-i18n="feat3_title">DeFi & Staking</h3><p data-i18n="feat3_desc">Stake DLI tokens for USDT rewards. Multiple periods available. Access dApps via built-in Web3 browser.</p></div>
+    <div class="card"><div class="card-num">03</div><h3 data-i18n="feat3_title">DeFi &amp; Staking</h3><p data-i18n="feat3_desc">Stake DLI tokens for USDT rewards. Multiple periods available. Access dApps via built-in Web3 browser.</p></div>
   </div>
 
-  <div class="stitle reveal" id="start">How to <span class="acc">Start</span></div>
+  <div class="stitle reveal" id="start" data-i18n="sec_start">How to <span class="acc">Start</span></div>
   <div class="steps reveal">
     <div class="step"><div class="snum">01</div><div class="scont"><h4 data-i18n="step1_title">Download the App</h4><p data-i18n="step1_desc">Available on <a href="https://apps.apple.com/us/app/dlicom/id6502626332" target="_blank">App Store</a> and <a href="https://play.google.com/store/search?q=dlicom&c=apps" target="_blank">Google Play</a>. Developer: Shlenpower Pte. Ltd.</p></div></div>
     <div class="step"><div class="snum">02</div><div class="scont"><h4 data-i18n="step2_title">Create a Wallet</h4><p data-i18n="step2_desc">During registration, create a new wallet or import an existing one. Save your seed phrase in a safe place — recovery without it is impossible.</p></div></div>
@@ -128,7 +105,29 @@
     <div class="step"><div class="snum">04</div><div class="scont"><h4 data-i18n="step4_title">Become an Active Member</h4><p data-i18n="step4_desc">Participate in activities, help newcomers, join the Regional Hunt — earn Dliever, Dcoded and DCO roles.</p></div></div>
   </div>
 
-  <div class="stitle reveal" id="hunt">Regional Lead <span class="acc">Hunt</span></div>
+  <div class="stitle reveal" id="news" data-i18n="sec_news">Discord <span class="acc">Updates</span></div>
+  <div class="news-grid reveal">
+    <div class="news-card news-card--hot">
+      <div class="news-meta"><span class="news-date" data-i18n="news1_date">2 MAR 2025</span><span class="news-badge new" data-i18n="news_badge_new">NEW</span></div>
+      <h3 class="news-title" data-i18n="news1_title">📌 #content-spotlight — raid selection</h3>
+      <p class="news-body" data-i18n="news1_body">A new channel <strong>#content-spotlight</strong> has appeared in Discord — a dedicated showcase for the best community content. Moderators will hand-pick creators' posts and feature them there, then organize a full raid on the top works. If your post makes it into <strong>#content-spotlight</strong>, the team considers it worthy of maximum reach. This is your chance to stand out among hundreds of Hunt participants and get on the team's radar. Post, put in the effort — and the next raid might just be on you.</p>
+      <div class="news-tag" data-i18n="news_tag_announce">📣 Announcement</div>
+    </div>
+    <div class="news-card">
+      <div class="news-meta"><span class="news-date" data-i18n="news2_date">27 FEB 2025</span><span class="news-badge phase" data-i18n="news_badge_phase1">PHASE 1</span></div>
+      <h3 class="news-title" data-i18n="news2_title">🚀 Regional Hunt launched</h3>
+      <p class="news-body" data-i18n="news2_body">Applications for Regional Lead and Regional Helper are now officially open. The <strong>#nominations</strong> channel is unlocked for Junior Hunter role holders. Apply now and be among the first.</p>
+      <div class="news-tag" data-i18n="news_tag_hunt">🏹 Hunt</div>
+    </div>
+    <div class="news-card">
+      <div class="news-meta"><span class="news-date" data-i18n="news3_date">FEB 2025</span><span class="news-badge info" data-i18n="news_badge_info">INFO</span></div>
+      <h3 class="news-title" data-i18n="news3_title">🎭 Dili lore contest</h3>
+      <p class="news-body" data-i18n="news3_body">Create a story, art or concept about the Dili mascot. The best 10 entries automatically earn the <strong>Dliever</strong> role. Post in <code>#creators</code> quoting the official X post.</p>
+      <div class="news-tag" data-i18n="news_tag_creators">🎨 Creators</div>
+    </div>
+  </div>
+
+  <div class="stitle reveal" id="hunt" data-i18n="sec_hunt">Regional Lead <span class="acc">Hunt</span></div>
   <div class="hunt-banner reveal">
     <h3 data-i18n="hunt_title">Become Regional Lead or Mod</h3>
     <p data-i18n="hunt_desc">The moment anyone can become a leader of their region. Work with the team, earn roles and shape the community. Right now — no moderators, no leads. The spot is open.</p>
@@ -141,42 +140,60 @@
   <div class="hunt-roles-grid reveal">
     <div class="hunt-role-card">
       <div class="hunt-role-tag lead">@Regional Lead</div>
-      <p>Community manager of your region. Responsible for growth, retention, positioning, managing regional campaigns and analytics.</p>
+      <p data-i18n="hrole1_desc">Community manager of your region. Responsible for growth, retention, positioning, managing regional campaigns and analytics.</p>
     </div>
     <div class="hunt-role-card">
       <div class="hunt-role-tag helper">@Regional Helper</div>
-      <p>Leader's assistant. Answers questions, guides members, runs events and keeps the chat active.</p>
+      <p data-i18n="hrole2_desc">Leader's assistant. Answers questions, guides members, runs events and keeps the chat active.</p>
     </div>
     <div class="hunt-role-card">
       <div class="hunt-role-tag contributor">@Dliever / @Dcoded / @DCO</div>
-      <p>Active content creators and contributors. Building games, websites, helping the team. Mostly active in <strong>#creators</strong> and <strong>#dlicom-creators</strong>.</p>
+      <p data-i18n="hrole3_desc">Active content creators and contributors. Building games, websites, helping the team. Mostly active in <strong>#creators</strong> and <strong>#dlicom-creators</strong>.</p>
     </div>
     <div class="hunt-role-card junior">
-      <div class="hunt-role-tag junior-tag">🔹 Junior Hunter</div>
-      <p>Fill the form and get this special role — grants access to <strong>#nominations</strong> and other private channels.</p>
-      <a href="https://forms.gle/LT9mZUa1KyUmxrZ1A" target="_blank" class="hunt-role-link">Fill the form →</a>
+      <div class="hunt-role-tag junior-tag" data-i18n="hrole4_tag">🔹 Junior Hunter</div>
+      <p data-i18n="hrole4_desc">Fill the form and get this special role — grants access to <strong>#nominations</strong> and other private channels.</p>
+      <a href="https://forms.gle/LT9mZUa1KyUmxrZ1A" target="_blank" class="hunt-role-link" data-i18n="hrole4_link">Fill the form →</a>
     </div>
   </div>
 
-  <div class="stitle reveal">Hunt <span class="acc">Phases</span></div>
+  <div class="stitle reveal" data-i18n="sec_phases">Hunt <span class="acc">Phases</span></div>
   <div class="phases reveal">
-    <div class="phase" data-n="1"><div class="phase-label" data-i18n="phase1_label">Phase 1</div><h4 data-i18n="phase1_title">Make Your Mark</h4><div class="dates">27 FEB — 11 MAR</div><p>Initial selection. Nominations channel opens. The team observes, helps and guides everyone in the right direction.</p><ul><li>10 Dliever roles per region</li><li>Nominations open for form fillers</li><li>Junior Hunter role available</li></ul></div>
-    <div class="phase" data-n="2"><div class="phase-label" data-i18n="phase2_label">Phase 2</div><h4 data-i18n="phase2_title">Trial Period</h4><div class="dates">12 MAR — 19 MAR</div><p>Top 5 candidates per region start working with the community team. Selected candidates can nominate people for Dliever and Dcoded.</p><ul><li>5 Dcoded roles per region</li><li>Only a Dliever can receive Dcoded</li><li>Direct team collaboration</li></ul></div>
-    <div class="phase" data-n="3"><div class="phase-label" data-i18n="phase3_label">Phase 3</div><h4 data-i18n="phase3_title">Final</h4><div class="dates">20 MAR — 27 MAR</div><p>Leads and mods in place, roles and permissions assigned. The hardest role — Dlicom Contribution Officer — becomes available.</p><ul><li>1 DCO role per region</li><li>Must have Dcoded + Dlicom server tag</li><li>Regional Lead &amp; Helper assigned</li></ul></div>
+    <div class="phase" data-n="1">
+      <div class="phase-label" data-i18n="phase1_label">Phase 1</div>
+      <h4 data-i18n="phase1_title">Make Your Mark</h4>
+      <div class="dates" data-i18n="phase1_dates">27 FEB — 11 MAR</div>
+      <p data-i18n="phase1_desc">Initial selection. Nominations channel opens. The team observes, helps and guides everyone in the right direction.</p>
+      <ul><li data-i18n="phase1_li1">10 Dliever roles per region</li><li data-i18n="phase1_li2">Nominations open for form fillers</li><li data-i18n="phase1_li3">Junior Hunter role available</li></ul>
+    </div>
+    <div class="phase" data-n="2">
+      <div class="phase-label" data-i18n="phase2_label">Phase 2</div>
+      <h4 data-i18n="phase2_title">Trial Period</h4>
+      <div class="dates" data-i18n="phase2_dates">12 MAR — 19 MAR</div>
+      <p data-i18n="phase2_desc">Top 5 candidates per region start working with the community team. Selected candidates can nominate people for Dliever and Dcoded.</p>
+      <ul><li data-i18n="phase2_li1">5 Dcoded roles per region</li><li data-i18n="phase2_li2">Only a Dliever can receive Dcoded</li><li data-i18n="phase2_li3">Direct team collaboration</li></ul>
+    </div>
+    <div class="phase" data-n="3">
+      <div class="phase-label" data-i18n="phase3_label">Phase 3</div>
+      <h4 data-i18n="phase3_title">Final</h4>
+      <div class="dates" data-i18n="phase3_dates">20 MAR — 27 MAR</div>
+      <p data-i18n="phase3_desc">Leads and mods in place, roles and permissions assigned. The hardest role — Dlicom Contribution Officer — becomes available.</p>
+      <ul><li data-i18n="phase3_li1">1 DCO role per region</li><li data-i18n="phase3_li2">Must have Dcoded + Dlicom server tag</li><li data-i18n="phase3_li3">Regional Lead &amp; Helper assigned</li></ul>
+    </div>
   </div>
 
   <div class="hunt-results reveal">
-    <div class="hunt-results-title">Per region results</div>
+    <div class="hunt-results-title" data-i18n="results_title">Per region results</div>
     <div class="hunt-results-grid">
       <div class="hres-item"><span class="hres-role" style="color:#00c8ff">@Regional Lead</span><span class="hres-count">×1</span></div>
       <div class="hres-item"><span class="hres-role" style="color:#a78bfa">@Regional Helper</span><span class="hres-count">×1</span></div>
-      <div class="hres-item"><span class="hres-role" style="color:#22c55e">@Dliever</span><span class="hres-count">×10 <span class="hres-phase">(Phase 1)</span></span></div>
-      <div class="hres-item"><span class="hres-role" style="color:#3b82f6">@Dcoded</span><span class="hres-count">×5 <span class="hres-phase">(Phase 2)</span></span></div>
-      <div class="hres-item"><span class="hres-role" style="color:#f59e0b">@DCO</span><span class="hres-count">×1 <span class="hres-phase">(Phase 3)</span></span></div>
+      <div class="hres-item"><span class="hres-role" style="color:#22c55e">@Dliever</span><span class="hres-count">×10 <span class="hres-phase" data-i18n="res_p1">(Phase 1)</span></span></div>
+      <div class="hres-item"><span class="hres-role" style="color:#3b82f6">@Dcoded</span><span class="hres-count">×5 <span class="hres-phase" data-i18n="res_p2">(Phase 2)</span></span></div>
+      <div class="hres-item"><span class="hres-role" style="color:#f59e0b">@DCO</span><span class="hres-count">×1 <span class="hres-phase" data-i18n="res_p3">(Phase 3)</span></span></div>
     </div>
   </div>
 
-  <div class="stitle reveal" id="roles">Community <span class="acc">Roles</span></div>
+  <div class="stitle reveal" id="roles" data-i18n="sec_roles">Community <span class="acc">Roles</span></div>
   <div class="roles-grid reveal">
     <div class="role-card"><div class="remoji">🛡️</div><div class="rinfo"><h4>Dliever</h4><p data-i18n="role1_desc">Pioneers who proved their reliability and knowledge of Dlicom. The most sought-after base role — the start of everything.</p></div></div>
     <div class="role-card"><div class="remoji">⚙️</div><div class="rinfo"><h4>Dcoded</h4><p data-i18n="role2_desc">Active and dedicated members — an example for newcomers. Requires Dliever role.</p></div></div>
@@ -184,7 +201,7 @@
     <div class="role-card"><div class="remoji">👑</div><div class="rinfo"><h4>OG</h4><p data-i18n="role4_desc">Legendary first 1000 users. Airdrop boost, bonus XP. No longer awarded.</p></div></div>
   </div>
 
-  <div class="stitle reveal">Community <span class="acc">Rules</span></div>
+  <div class="stitle reveal" data-i18n="sec_rules">Community <span class="acc">Rules</span></div>
   <div class="grid-2 reveal">
     <div class="card"><div class="card-icon">⛔</div><h3 data-i18n="rule1_title">Prohibited</h3><p data-i18n="rule1_desc">Politics, racism, discrimination. NSFW content. Spam and self-promotion. Off-topic in themed channels.</p></div>
     <div class="card"><div class="card-icon">🤝</div><h3 data-i18n="rule2_title">Welcome</h3><p data-i18n="rule2_desc">Help newcomers, grow yourself, build connections. Turn ideas into action. Be yourself.</p></div>
@@ -192,7 +209,7 @@
     <div class="card"><div class="card-icon">🚀</div><h3 data-i18n="rule4_title">Community Principle</h3><p data-i18n="rule4_desc">Value is everything. The <strong>#creators</strong> channel is the most reliable way to earn a role.</p></div>
   </div>
 
-  <div class="stitle reveal" id="tokenomics">Tokeno<span class="acc">mics</span></div>
+  <div class="stitle reveal" id="tokenomics" data-i18n="sec_token">Tokeno<span class="acc">mics</span></div>
   <div class="token-wrap reveal">
     <div class="donut-box">
       <svg viewBox="0 0 260 260">
@@ -209,19 +226,19 @@
       <div class="donut-center"><img src="logoicon.png" alt="DLI" onerror="this.src='https://i.postimg.cc/65j78jJr/imagevfyvf.png'"></div>
     </div>
     <div class="legend">
-      <div class="lrow"><div class="ldot" style="background:#3b82f6"></div> Network Sale <span class="lpct">41.83%</span></div>
-      <div class="lrow"><div class="ldot" style="background:#22c55e"></div> Public Pre Sale <span class="lpct">14.08%</span></div>
-      <div class="lrow"><div class="ldot" style="background:#00c8ff"></div> Liquidity <span class="lpct">15%</span></div>
-      <div class="lrow"><div class="ldot" style="background:#a78bfa"></div> Public Sale <span class="lpct">14.08%</span></div>
-      <div class="lrow"><div class="ldot" style="background:#06b6d4"></div> Treasury & Reserve <span class="lpct">5%</span></div>
-      <div class="lrow"><div class="ldot" style="background:#f97316"></div> Ecosystem / Expenses <span class="lpct">3%</span></div>
-      <div class="lrow"><div class="ldot" style="background:#84cc16"></div> Founders and Team <span class="lpct">3%</span></div>
-      <div class="lrow"><div class="ldot" style="background:#ec4899"></div> Community / Users Incentives <span class="lpct">3%</span></div>
-      <div class="lrow"><div class="ldot" style="background:#f59e0b"></div> Advisory <span class="lpct">1%</span></div>
+      <div class="lrow"><div class="ldot" style="background:#3b82f6"></div><span data-i18n="leg1">Network Sale</span><span class="lpct">41.83%</span></div>
+      <div class="lrow"><div class="ldot" style="background:#22c55e"></div><span data-i18n="leg2">Public Pre Sale</span><span class="lpct">14.08%</span></div>
+      <div class="lrow"><div class="ldot" style="background:#00c8ff"></div><span data-i18n="leg3">Liquidity</span><span class="lpct">15%</span></div>
+      <div class="lrow"><div class="ldot" style="background:#a78bfa"></div><span data-i18n="leg4">Public Sale</span><span class="lpct">14.08%</span></div>
+      <div class="lrow"><div class="ldot" style="background:#06b6d4"></div><span data-i18n="leg5">Treasury &amp; Reserve</span><span class="lpct">5%</span></div>
+      <div class="lrow"><div class="ldot" style="background:#f97316"></div><span data-i18n="leg6">Ecosystem / Expenses</span><span class="lpct">3%</span></div>
+      <div class="lrow"><div class="ldot" style="background:#84cc16"></div><span data-i18n="leg7">Founders and Team</span><span class="lpct">3%</span></div>
+      <div class="lrow"><div class="ldot" style="background:#ec4899"></div><span data-i18n="leg8">Community / Users Incentives</span><span class="lpct">3%</span></div>
+      <div class="lrow"><div class="ldot" style="background:#f59e0b"></div><span data-i18n="leg9">Advisory</span><span class="lpct">1%</span></div>
     </div>
   </div>
 
-  <div class="stitle reveal">Token Details <span class="acc">$DLI</span></div>
+  <div class="stitle reveal" data-i18n="sec_tokdet">Token Details <span class="acc">$DLI</span></div>
   <table class="ttable reveal">
     <tr><td data-i18n="tok_standard">Standard</td><td>ERC-20</td></tr>
     <tr><td>Ticker</td><td>DLI</td></tr>
@@ -231,82 +248,37 @@
     <tr><td data-i18n="tok_cap">Initial Market Cap</td><td>$4,106,250</td></tr>
     <tr><td>FDV</td><td>$17,750,000</td></tr>
     <tr><td data-i18n="tok_lp">Liquidity Pool</td><td>2,500,000 USDC / 50,000,000 DLI</td></tr>
-    <tr><td data-i18n="tok_vest">Vesting</td><td>0–60 months</td></tr>
-    <tr><td>Decimals</td><td>18</td></tr>
+    <tr><td data-i18n="tok_vest">Vesting</td><td data-i18n="tok_vest_val">0–60 months</td></tr>
+    <tr><td data-i18n="tok_dec">Decimals</td><td>18</td></tr>
   </table>
 
-  <div class="stitle reveal" id="team">Dlicom <span class="acc">Team</span></div>
+  <div class="stitle reveal" id="team" data-i18n="sec_team">Dlicom <span class="acc">Team</span></div>
   <div class="team-grid reveal">
-    <div class="team-card">
-      <img class="tphoto" src="https://www.dlicom.io/_next/static/media/mohammad_qadriah.3cc25978.png" alt="Mohammad">
-      <div class="tinfo"><h4>Mohammad Qadriah</h4><p>Chairman &amp; Co-Founder</p></div>
-    </div>
-    <div class="team-card">
-      <img class="tphoto" src="https://www.dlicom.io/_next/static/media/george_chahine.12081b16.png" alt="George">
-      <div class="tinfo"><h4>George Chahine</h4><p>Head of Tokenomics</p></div>
-    </div>
-    <div class="team-card">
-      <img class="tphoto" src="https://www.dlicom.io/_next/static/media/mohamed_alsherif.698cb3df.png" alt="Mohamed">
-      <div class="tinfo"><h4>Mohamed Alsherif</h4><p>Community Manager</p></div>
-    </div>
-    <div class="team-card">
-      <img class="tphoto" src="https://www.dlicom.io/_next/static/media/ahmed.1d0a9f57.png" alt="Ahmed">
-      <div class="tinfo"><h4>Ahmed Omar</h4><p>Product Manager</p></div>
-    </div>
-    <div class="team-card">
-      <img class="tphoto" src="https://www.dlicom.io/_next/static/media/jimish_parekh.406e29b3.png" alt="Jimish">
-      <div class="tinfo"><h4>Jimish Parekh</h4><p>CTO</p></div>
-    </div>
+    <div class="team-card"><img class="tphoto" src="https://www.dlicom.io/_next/static/media/mohammad_qadriah.3cc25978.png" alt="Mohammad"><div class="tinfo"><h4>Mohammad Qadriah</h4><p data-i18n="team1_role">Chairman &amp; Co-Founder</p></div></div>
+    <div class="team-card"><img class="tphoto" src="https://www.dlicom.io/_next/static/media/george_chahine.12081b16.png" alt="George"><div class="tinfo"><h4>George Chahine</h4><p data-i18n="team2_role">Head of Tokenomics</p></div></div>
+    <div class="team-card"><img class="tphoto" src="https://www.dlicom.io/_next/static/media/mohamed_alsherif.698cb3df.png" alt="Mohamed"><div class="tinfo"><h4>Mohamed Alsherif</h4><p data-i18n="team3_role">Community Manager</p></div></div>
+    <div class="team-card"><img class="tphoto" src="https://www.dlicom.io/_next/static/media/ahmed.1d0a9f57.png" alt="Ahmed"><div class="tinfo"><h4>Ahmed Omar</h4><p data-i18n="team4_role">Product Manager</p></div></div>
+    <div class="team-card"><img class="tphoto" src="https://www.dlicom.io/_next/static/media/jimish_parekh.406e29b3.png" alt="Jimish"><div class="tinfo"><h4>Jimish Parekh</h4><p>CTO</p></div></div>
   </div>
   <div class="team-grid-bottom reveal">
     <div class="team-card">
       <div class="tphoto mascot-avatar" style="background:linear-gradient(135deg,#060614,#0a0a20);display:flex;align-items:center;justify-content:center;aspect-ratio:1;">
-        <svg width="78%" height="78%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <defs><radialGradient id="glow1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1a6fff" stop-opacity="0.6"/><stop offset="100%" stop-color="#000" stop-opacity="0"/></radialGradient></defs>
-          <circle cx="100" cy="100" r="90" fill="url(#glow1)"/>
-          <circle cx="100" cy="96" r="58" fill="#0a0a0a"/>
-          <rect x="48" y="78" width="104" height="44" rx="22" fill="#1a6fff"/>
-          <rect x="18" y="90" width="36" height="14" rx="7" fill="#1a6fff" transform="rotate(-10,36,97)"/>
-          <rect x="146" y="90" width="36" height="14" rx="7" fill="#1a6fff" transform="rotate(10,164,97)"/>
-          <rect x="68" y="92" width="18" height="18" rx="2" fill="#fff" transform="rotate(45,77,101)"/>
-          <rect x="74" y="98" width="8" height="8" rx="1" fill="#0a0a0a" transform="rotate(45,78,102)"/>
-          <rect x="114" y="92" width="18" height="18" rx="2" fill="#fff" transform="rotate(45,123,101)"/>
-          <rect x="120" y="98" width="8" height="8" rx="1" fill="#0a0a0a" transform="rotate(45,124,102)"/>
-          <path d="M88 116 Q100 124 112 116" stroke="#0a0a0a" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <polygon points="88,122 80,132 104,122" fill="#1a6fff"/>
-          <rect x="72" y="148" width="56" height="20" rx="4" fill="#00c8ff" opacity="0.9"/>
-          <text x="100" y="162" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#000">SMM</text>
-        </svg>
+        <svg width="78%" height="78%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="glow1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1a6fff" stop-opacity="0.6"/><stop offset="100%" stop-color="#000" stop-opacity="0"/></radialGradient></defs><circle cx="100" cy="100" r="90" fill="url(#glow1)"/><circle cx="100" cy="96" r="58" fill="#0a0a0a"/><rect x="48" y="78" width="104" height="44" rx="22" fill="#1a6fff"/><rect x="18" y="90" width="36" height="14" rx="7" fill="#1a6fff" transform="rotate(-10,36,97)"/><rect x="146" y="90" width="36" height="14" rx="7" fill="#1a6fff" transform="rotate(10,164,97)"/><rect x="68" y="92" width="18" height="18" rx="2" fill="#fff" transform="rotate(45,77,101)"/><rect x="74" y="98" width="8" height="8" rx="1" fill="#0a0a0a" transform="rotate(45,78,102)"/><rect x="114" y="92" width="18" height="18" rx="2" fill="#fff" transform="rotate(45,123,101)"/><rect x="120" y="98" width="8" height="8" rx="1" fill="#0a0a0a" transform="rotate(45,124,102)"/><path d="M88 116 Q100 124 112 116" stroke="#0a0a0a" stroke-width="3" fill="none" stroke-linecap="round"/><polygon points="88,122 80,132 104,122" fill="#1a6fff"/><rect x="72" y="148" width="56" height="20" rx="4" fill="#00c8ff" opacity="0.9"/><text x="100" y="162" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#000">SMM</text></svg>
       </div>
       <div class="tinfo"><h4>Daniel Way</h4><p>SMM</p></div>
     </div>
     <div class="team-card">
       <div class="tphoto mascot-avatar" style="background:linear-gradient(135deg,#0d0010,#0a0018);display:flex;align-items:center;justify-content:center;aspect-ratio:1;">
-        <svg width="78%" height="78%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <defs><radialGradient id="glow2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#5b2cf0" stop-opacity="0.6"/><stop offset="100%" stop-color="#000" stop-opacity="0"/></radialGradient></defs>
-          <circle cx="100" cy="100" r="90" fill="url(#glow2)"/>
-          <circle cx="100" cy="96" r="58" fill="#0a0a0a"/>
-          <rect x="48" y="78" width="104" height="44" rx="22" fill="#5b2cf0"/>
-          <rect x="18" y="90" width="36" height="14" rx="7" fill="#5b2cf0" transform="rotate(-8,36,97)"/>
-          <rect x="146" y="90" width="36" height="14" rx="7" fill="#5b2cf0" transform="rotate(8,164,97)"/>
-          <rect x="68" y="92" width="18" height="18" rx="2" fill="#fff" transform="rotate(45,77,101)"/>
-          <rect x="74" y="98" width="8" height="8" rx="1" fill="#0a0a0a" transform="rotate(45,78,102)"/>
-          <rect x="114" y="92" width="18" height="18" rx="2" fill="#fff" transform="rotate(45,123,101)"/>
-          <rect x="120" y="98" width="8" height="8" rx="1" fill="#0a0a0a" transform="rotate(45,124,102)"/>
-          <path d="M86 115 Q100 125 114 115" stroke="#0a0a0a" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <polygon points="88,122 80,132 104,122" fill="#5b2cf0"/>
-          <rect x="72" y="148" width="56" height="20" rx="4" fill="#a78bfa" opacity="0.9"/>
-          <text x="100" y="162" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#0a0a0a">CMO</text>
-        </svg>
+        <svg width="78%" height="78%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="glow2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#5b2cf0" stop-opacity="0.6"/><stop offset="100%" stop-color="#000" stop-opacity="0"/></radialGradient></defs><circle cx="100" cy="100" r="90" fill="url(#glow2)"/><circle cx="100" cy="96" r="58" fill="#0a0a0a"/><rect x="48" y="78" width="104" height="44" rx="22" fill="#5b2cf0"/><rect x="18" y="90" width="36" height="14" rx="7" fill="#5b2cf0" transform="rotate(-8,36,97)"/><rect x="146" y="90" width="36" height="14" rx="7" fill="#5b2cf0" transform="rotate(8,164,97)"/><rect x="68" y="92" width="18" height="18" rx="2" fill="#fff" transform="rotate(45,77,101)"/><rect x="74" y="98" width="8" height="8" rx="1" fill="#0a0a0a" transform="rotate(45,78,102)"/><rect x="114" y="92" width="18" height="18" rx="2" fill="#fff" transform="rotate(45,123,101)"/><rect x="120" y="98" width="8" height="8" rx="1" fill="#0a0a0a" transform="rotate(45,124,102)"/><path d="M86 115 Q100 125 114 115" stroke="#0a0a0a" stroke-width="3" fill="none" stroke-linecap="round"/><polygon points="88,122 80,132 104,122" fill="#5b2cf0"/><rect x="72" y="148" width="56" height="20" rx="4" fill="#a78bfa" opacity="0.9"/><text x="100" y="162" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#0a0a0a">CMO</text></svg>
       </div>
       <div class="tinfo"><h4>Timur</h4><p>CMO</p></div>
     </div>
   </div>
 
-  <div class="stitle reveal" id="faq">Frequently Asked <span class="acc">Questions</span></div>
+  <div class="stitle reveal" id="faq" data-i18n="sec_faq">Frequently Asked <span class="acc">Questions</span></div>
   <div class="faq-list reveal">
-    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span>What is the Junior Hunter role?</span><span class="arrow">+</span></div><div class="faq-a">Fill out the <a href="https://forms.gle/LT9mZUa1KyUmxrZ1A" target="_blank">application form</a> and get the Junior Hunter role — it grants access to <strong>#nominations</strong> and other private channels during the Hunt.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span>What is the difference between Regional Lead and Regional Helper?</span><span class="arrow">+</span></div><div class="faq-a"><strong>Regional Lead</strong> is the community manager of their region: growth, retention, campaigns, analytics. <strong>Regional Helper</strong> is the leader's assistant: answers questions, guides members, runs events, keeps the chat active. You can apply for Lead directly and automatically become a candidate for Helper as well.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span data-i18n="faq0_q">What is the Junior Hunter role?</span><span class="arrow">+</span></div><div class="faq-a" data-i18n="faq0_a">Fill out the <a href="https://forms.gle/LT9mZUa1KyUmxrZ1A" target="_blank">application form</a> and get the Junior Hunter role — it grants access to <strong>#nominations</strong> and other private channels during the Hunt.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span data-i18n="faqA_q">What is the difference between Regional Lead and Regional Helper?</span><span class="arrow">+</span></div><div class="faq-a" data-i18n="faqA_a"><strong>Regional Lead</strong> is the community manager of their region: growth, retention, campaigns, analytics. <strong>Regional Helper</strong> is the leader's assistant: answers questions, guides members, runs events, keeps the chat active.</div></div>
     <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span data-i18n="faq1_q">How to become Regional Lead?</span><span class="arrow">+</span></div><div class="faq-a" data-i18n="faq1_a">1. Fill out the <a href="https://forms.gle/LT9mZUa1KyUmxrZ1A" target="_blank">application form</a>. 2. In Discord, choose your region. 3. Actively participate in all three phases (27 Feb — 27 Mar).</div></div>
     <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span data-i18n="faq2_q">Is Dliever required to join the Regional Hunt?</span><span class="arrow">+</span></div><div class="faq-a" data-i18n="faq2_a">No. Dliever is not required to apply. But active participants earn it automatically and have priority in selection.</div></div>
     <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span data-i18n="faq3_q">What is the DLI token?</span><span class="arrow">+</span></div><div class="faq-a" data-i18n="faq3_a">DLI is Dlicom's native token on Ethereum. Used for: sending crypto in chat, tips, gas payments, staking with USDT rewards, and voting.</div></div>
@@ -317,57 +289,20 @@
     <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span data-i18n="faq8_q">Why is now the best time to join?</span><span class="arrow">+</span></div><div class="faq-a" data-i18n="faq8_a">It's the earliest stage — no moderators, no leads in regions yet. Starting from zero right now is the best window to become a Regional Lead or Helper.</div></div>
   </div>
 
-  <div class="stitle reveal">Official <span class="acc">Links</span></div>
+  <div class="stitle reveal" data-i18n="sec_links">Official <span class="acc">Links</span></div>
   <div class="links-grid reveal">
     <a href="https://www.dlicom.io" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>dlicom.io</a>
-    <a href="https://whitepaper.dlicom.io" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>Whitepaper</a>
+    <a href="https://whitepaper.dlicom.io" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span data-i18n="link_wp">Whitepaper</span></a>
     <a href="https://apps.apple.com/us/app/dlicom/id6502626332" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></span>App Store</a>
     <a href="https://play.google.com/store/search?q=dlicom&c=apps" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.22.99.14l.11-.06 11.05-6.38-2.35-2.38-9.8 8.68zM.19 1.11C.07 1.4 0 1.73 0 2.09v19.83c0 .36.07.69.19.98l.1.1 11.1-11.09v-.26L.29 1.01l-.1.1zM20.55 9.75l-2.66-1.54-2.62 2.62 2.62 2.62 2.68-1.55c.76-.44.76-1.71-.02-2.15zM3.18.24l9.8 8.68 2.35-2.38L4.28.16C3.93.07 3.49.1 3.18.24z"/></svg></span>Google Play</a>
     <a href="https://x.com/DlicomApp" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>X / Twitter</a>
-    <a href="https://t.me/DlicomAppOfficial" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span>Telegram Official</a>
-    <a href="https://t.me/dlicom" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span>Telegram CIS</a>
-    <a href="https://youtube.com/@DlicomApp" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>YouTube</a>
-    <a href="https://medium.com/@dlicom" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg></span>Medium Blog</a>
+    <a href="https://t.me/DlicomAppOfficial" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span><span data-i18n="link_tgoff">Telegram Official</span></a>
+    <a href="https://t.me/dlicom" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.277-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span><span data-i18n="link_tgcis">Telegram CIS</span></a>
+    <a href="https://youtube.com/@DlicomApp" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span><span data-i18n="link_yt">YouTube</span></a>
+    <a href="https://medium.com/@dlicom" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg></span><span data-i18n="link_med">Medium Blog</span></a>
     <a href="https://reddit.com/user/DlicomApp" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>Reddit</a>
     <a href="https://instagram.com/dlicomapp" target="_blank" class="link-card"><span class="link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></span>Instagram</a>
   </div>
-
-  <!-- NEWS SECTION -->
-  <div class="stitle reveal" id="news">Discord <span class="acc">Updates</span></div>
-  <div class="news-grid reveal">
-
-    <div class="news-card news-card--hot">
-      <div class="news-meta">
-        <span class="news-date">2 MAR 2025</span>
-        <span class="news-badge new" data-i18n="news_badge_new">NEW</span>
-      </div>
-      <h3 class="news-title" data-i18n="news1_title">📌 #content-spotlight — raid selection</h3>
-      <p class="news-body" data-i18n="news1_body">A new channel <strong>#content-spotlight</strong> has appeared in Discord — a dedicated showcase for the best community content. Moderators will hand-pick creators' posts and feature them there, then organize a full raid on the top works. If your post makes it into <strong>#content-spotlight</strong>, the team considers it worthy of maximum reach. This is your chance to stand out among hundreds of Hunt participants and get on the team's radar. Post, put in the effort — and the next raid might just be on you.</p>
-      <div class="news-tag" data-i18n="news_tag_announce">📣 Announcement</div>
-    </div>
-
-    <div class="news-card">
-      <div class="news-meta">
-        <span class="news-date">27 FEB 2025</span>
-        <span class="news-badge phase" data-i18n="news_badge_phase1">PHASE 1</span>
-      </div>
-      <h3 class="news-title" data-i18n="news2_title">🚀 Regional Hunt launched</h3>
-      <p class="news-body" data-i18n="news2_body">Applications for Regional Lead and Regional Helper are now officially open. The <strong>#nominations</strong> channel is unlocked for Junior Hunter role holders. Apply now and be among the first.</p>
-      <div class="news-tag" data-i18n="news_tag_hunt">🏹 Hunt</div>
-    </div>
-
-    <div class="news-card">
-      <div class="news-meta">
-        <span class="news-date">FEB 2025</span>
-        <span class="news-badge info" data-i18n="news_badge_info">INFO</span>
-      </div>
-      <h3 class="news-title" data-i18n="news3_title">🎭 Dili lore contest</h3>
-      <p class="news-body" data-i18n="news3_body">Create a story, art or concept about the Dili mascot. The best 10 entries automatically earn the <strong>Dliever</strong> role. Post in <code>#creators</code> quoting the official X post.</p>
-      <div class="news-tag" data-i18n="news_tag_creators">🎨 Creators</div>
-    </div>
-
-  </div>
-  <!-- END NEWS -->
 
   <div class="cta-block reveal">
     <div class="cta-text">
@@ -389,12 +324,12 @@
   </div>
   <div class="flinks">
     <a href="https://www.dlicom.io" target="_blank">dlicom.io</a>
-    <a href="https://whitepaper.dlicom.io" target="_blank">Whitepaper</a>
+    <a href="https://whitepaper.dlicom.io" target="_blank" data-i18n="link_wp">Whitepaper</a>
     <a href="https://forms.gle/LT9mZUa1KyUmxrZ1A" target="_blank" data-i18n="footer_apply">Application Form</a>
   </div>
   <a href="https://discord.gg/BmYmRXc8" target="_blank" class="dlink" data-i18n="footer_discord">
     <svg width="16" height="12" viewBox="0 0 71 55" fill="none"><path d="M60.1 4.9A58.6 58.6 0 0 0 45.5.4a.2.2 0 0 0-.2.1 40.8 40.8 0 0 0-1.8 3.7 54.1 54.1 0 0 0-16.2 0A37.7 37.7 0 0 0 25.5.5a.2.2 0 0 0-.2-.1A58.5 58.5 0 0 0 10.6 4.9a.2.2 0 0 0-.1.1C1.6 18.1-.9 31 .3 43.7a.2.2 0 0 0 .1.2 58.9 58.9 0 0 0 17.7 8.9.2.2 0 0 0 .2-.1 42 42 0 0 0 3.6-5.9.2.2 0 0 0-.1-.3 38.8 38.8 0 0 1-5.5-2.6.2.2 0 0 1 0-.4c.4-.3.7-.6 1.1-.8a.2.2 0 0 1 .2 0c11.5 5.2 23.9 5.2 35.3 0a.2.2 0 0 1 .2 0c.4.3.7.5 1.1.8a.2.2 0 0 1 0 .4 36.1 36.1 0 0 1-5.5 2.6.2.2 0 0 0-.1.3 47.1 47.1 0 0 0 3.6 5.9.2.2 0 0 0 .2.1 58.7 58.7 0 0 0 17.8-8.9.2.2 0 0 0 .1-.2c1.5-15-2.5-27.8-10.4-39.3a.2.2 0 0 0-.1-.1zM23.7 36c-3.5 0-6.4-3.2-6.4-7.1s2.8-7.1 6.4-7.1c3.6 0 6.5 3.2 6.4 7.1 0 3.9-2.8 7.1-6.4 7.1zm23.6 0c-3.5 0-6.4-3.2-6.4-7.1s2.8-7.1 6.4-7.1c3.6 0 6.5 3.2 6.4 7.1 0 3.9-2.8 7.1-6.4 7.1z" fill="currentColor"/></svg>
-    Join the Server
+    <span data-i18n="footer_discord_txt">Join the Server</span>
   </a>
 </footer>
 
