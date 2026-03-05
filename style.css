@@ -23,6 +23,7 @@ a,button,label,input,select,textarea,[onclick],[role="button"]{cursor:none !impo
   transform:rotate(45deg);
   pointer-events:none;
   z-index:9999;
+  margin-left:-4px;margin-top:-4px;
   box-shadow:0 0 6px var(--blue),0 0 14px rgba(26,111,255,0.35);
   transition:background 0.15s,box-shadow 0.15s,width 0.15s,height 0.15s;
 }
@@ -33,6 +34,7 @@ a,button,label,input,select,textarea,[onclick],[role="button"]{cursor:none !impo
   transform:rotate(45deg);
   pointer-events:none;
   z-index:9998;
+  margin-left:-11px;margin-top:-11px;
   transition:border-color 0.2s,width 0.15s,height 0.15s;
 }
 

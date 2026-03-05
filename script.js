@@ -2,10 +2,10 @@
 const cur = document.getElementById('cur');
 const ring = document.getElementById('cring');
 let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.cssText = `left:${mx}px;top:${my}px`; });
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = mx+'px'; cur.style.top = my+'px'; });
 (function animRing() {
   rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
-  ring.style.cssText = `left:${rx}px;top:${ry}px`;
+  ring.style.left = rx+'px'; ring.style.top = ry+'px';
   requestAnimationFrame(animRing);
 })();
 document.querySelectorAll('a,button,.faq-q,.lang-option').forEach(el => {
@@ -277,6 +277,10 @@ const T = {
     news3_title: '🎭 Dili lore contest',
     news3_body: 'Create a story, art or concept about the Dili mascot. The best 10 entries automatically earn the <strong>Dliever</strong> role. Post in <code>#creators</code> quoting the official X post.',
     news_tag_creators: '🎨 Creators',
+    news4_date: '5 MAR 2025',
+    news4_title: '🛡️ Test Moderators Appointed',
+    news4_body: '6 test moderators have been appointed in the Discord server. After a 2-week trial period, 2 of them will remain as permanent moderators. The selection process is underway — the best will stay.',
+    news_tag_mod: '🛡️ Moderation',
     cta_title: 'Ready to join the Community Hub?',
     cta_desc: 'Join Discord, choose your region and participate in the Regional Hunt',
     cta_btn1: '↗ Open Discord',
@@ -443,6 +447,15 @@ const T = {
     news3_title: '🎭 Конкурс лора Дили',
     news3_body: 'Создай историю, арт или концепт о маскоте Дили. Лучшие 10 работ автоматически получают роль <strong>Dliever</strong>. Публикуй в <code>#creators</code>, цитируя официальный X пост.',
     news_tag_creators: '🎨 Создатели',
+    news4_date: '5 МАР 2025',
+    news4_title: '🛡️ Назначены тестовые модераторы',
+    news4_body: 'На сервере Discord назначены 6 тестовых модераторов. После двухнедельного испытательного периода из них останутся 2 постоянных модератора. Отбор идёт — лучшие останутся.',
+    news_tag_mod: '🛡️ Модерация',
+    news5_date: '5 МАР 2025',
+    news5_title: '🏆 Турнир по CS2 — СНГ регион',
+    news5_body: '5 марта в 19:00 по МСК пройдёт турнир по CS2 в регионе СНГ. Подать заявку на участие можно по ссылке ниже.',
+    news5_btn: '📋 Подать заявку',
+    news_tag_tournament: '🏆 Турнир',
     cta_title: 'Готов присоединиться к Community Hub?',
     cta_desc: 'Войди в Discord, выбери регион и участвуй в Regional Hunt',
     cta_btn1: '↗ Открыть Discord',
@@ -609,6 +622,10 @@ const T = {
     news3_title: '🎭 مسابقة قصة Dili',
     news3_body: 'أنشئ قصة أو فنًا أو مفهومًا عن شخصية Dili. أفضل ١٠ مشاركات تحصل تلقائيًا على دور <strong>Dliever</strong>. انشر في <code>#creators</code> مع اقتباس منشور إكس الرسمي.',
     news_tag_creators: '🎨 المبدعون',
+    news4_date: '٥ مارس ٢٠٢٥',
+    news4_title: '🛡️ تعيين مشرفين تجريبيين',
+    news4_body: 'تم تعيين 6 مشرفين تجريبيين في سيرفر Discord. بعد فترة تجريبية مدتها أسبوعان، سيبقى اثنان منهم كمشرفين دائمين. عملية الاختيار جارية — الأفضل سيبقى.',
+    news_tag_mod: '🛡️ الإشراف',
     cta_title: 'هل أنت مستعد للانضمام إلى مركز المجتمع؟',
     cta_desc: 'انضم إلى ديسكورد، اختر منطقتك وشارك في صيد المنطقة',
     cta_btn1: '↗ افتح ديسكورد',
@@ -775,6 +792,15 @@ const T = {
     news3_title: '🎭 Конкурс лору Діли',
     news3_body: 'Створи історію, арт або концепт про маскота Діли. Найкращі 10 робіт автоматично отримують роль <strong>Dliever</strong>. Публікуй у <code>#creators</code>, цитуючи офіційний X пост.',
     news_tag_creators: '🎨 Творці',
+    news4_date: '5 БЕР 2025',
+    news4_title: '🛡️ Призначено тестових модераторів',
+    news4_body: 'На сервері Discord призначено 6 тестових модераторів. Після двотижневого випробувального періоду з них залишаться 2 постійних модератори. Відбір триває — кращі залишаться.',
+    news_tag_mod: '🛡️ Модерація',
+    news5_date: '5 БЕР 2025',
+    news5_title: '🏆 Турнір з CS2 — регіон СНД',
+    news5_body: '5 березня о 19:00 за МСК відбудеться турнір з CS2 в регіоні СНД. Подати заявку на участь можна за посиланням нижче.',
+    news5_btn: '📋 Подати заявку',
+    news_tag_tournament: '🏆 Турнір',
     cta_title: 'Готовий приєднатися до Community Hub?',
     cta_desc: 'Увійди в Discord, обери регіон та бери участь у Regional Hunt',
     cta_btn1: '↗ Відкрити Discord',
@@ -941,6 +967,10 @@ const T = {
     news3_title: '🎭 Cuộc thi truyền thuyết Dili',
     news3_body: 'Tạo câu chuyện, nghệ thuật hoặc ý tưởng về linh vật Dili. 10 tác phẩm tốt nhất tự động nhận vai <strong>Dliever</strong>. Đăng trong <code>#creators</code> trích dẫn bài X chính thức.',
     news_tag_creators: '🎨 Nhà sáng tạo',
+    news4_date: '5 THÁNG 3 2025',
+    news4_title: '🛡️ Bổ nhiệm Mod thử nghiệm',
+    news4_body: '6 mod thử nghiệm đã được bổ nhiệm trên Discord. Sau 2 tuần thử việc, 2 trong số họ sẽ ở lại làm mod chính thức. Quá trình chọn lọc đang diễn ra — người tốt nhất sẽ ở lại.',
+    news_tag_mod: '🛡️ Kiểm duyệt',
     cta_title: 'Sẵn sàng tham gia Trung tâm Cộng đồng?',
     cta_desc: 'Tham gia Discord, chọn vùng của bạn và tham gia Regional Hunt',
     cta_btn1: '↗ Mở Discord',
@@ -1107,6 +1137,10 @@ const T = {
     news3_title: '🎭 Dili लोर कॉन्टेस्ट',
     news3_body: 'Dili मस्कट के बारे में कहानी, आर्ट या कॉन्सेप्ट बनाएँ। टॉप 10 एंट्री को अपने आप <strong>Dliever</strong> रोल मिलता है। आधिकारिक X पोस्ट कोट करते हुए <code>#creators</code> में पोस्ट करें।',
     news_tag_creators: '🎨 क्रिएटर्स',
+    news4_date: '5 मार 2025',
+    news4_title: '🛡️ टेस्ट मॉडरेटर नियुक्त',
+    news4_body: 'Discord सर्वर में 6 टेस्ट मॉडरेटर नियुक्त किए गए हैं। 2 सप्ताह के ट्रायल पीरियड के बाद उनमें से 2 स्थायी मॉडरेटर बनेंगे। चयन प्रक्रिया जारी है — सर्वश्रेष्ठ बने रहेंगे।',
+    news_tag_mod: '🛡️ मॉडरेशन',
     cta_title: 'कम्युनिटी हब से जुड़ने के लिए तैयार हैं?',
     cta_desc: 'Discord से जुड़ें, अपना क्षेत्र चुनें और Regional Hunt में भाग लें',
     cta_btn1: '↗ Discord खोलें',
@@ -1127,6 +1161,9 @@ function applyLang(lang) {
     const key = el.dataset.i18n;
     if (t[key] !== undefined) el.innerHTML = t[key];
   });
+  // Show tournament card only for RU and UK
+  const news5 = document.getElementById('news5');
+  if (news5) news5.style.display = (lang === 'ru' || lang === 'uk') ? '' : 'none';
 }
 
 // ── Nav scroll effect ──────────────────────────────────────────
