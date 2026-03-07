@@ -13,75 +13,7 @@ document.querySelectorAll('a,button,.faq-q,.lang-option').forEach(el => {
   el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
 });
 
-// ── Three.js Gem Scene ─────────────────────────────────────────
-(function initThree() {
-  const canvas = document.getElementById('threeCanvas');
-  if (!canvas || typeof THREE === 'undefined') return;
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
-  camera.position.set(0, 0, 7);
-
-  function resize() {
-    const w = canvas.clientWidth, h = canvas.clientHeight;
-    renderer.setSize(w, h, false);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  const light1 = new THREE.DirectionalLight(0x7c6fff, 2.5);
-  light1.position.set(5, 5, 5);
-  scene.add(light1);
-  const light2 = new THREE.DirectionalLight(0x00c8ff, 1.5);
-  light2.position.set(-5, -3, 2);
-  scene.add(light2);
-  scene.add(new THREE.AmbientLight(0x1a1040, 3));
-
-  const gems = [];
-  const geomTypes = [
-    new THREE.OctahedronGeometry(1),
-    new THREE.TetrahedronGeometry(1),
-    new THREE.IcosahedronGeometry(1),
-  ];
-  const gemData = [
-    { pos: [-3.5, 1, -1], scale: 0.55, color: 0x5b2cf0, speed: 0.007, floatAmp: 0.18 },
-    { pos: [3.8, 0.5, -2], scale: 0.45, color: 0x00c8ff, speed: 0.009, floatAmp: 0.22 },
-    { pos: [-2.5, -2, -1.5], scale: 0.4, color: 0xa78bfa, speed: 0.006, floatAmp: 0.15 },
-    { pos: [2.5, -1.8, -0.5], scale: 0.5, color: 0x7c6fff, speed: 0.008, floatAmp: 0.2 },
-    { pos: [0.5, 2.8, -3], scale: 0.35, color: 0x22c55e, speed: 0.011, floatAmp: 0.25 },
-    { pos: [-4.5, -0.5, -3], scale: 0.3, color: 0x5b2cf0, speed: 0.013, floatAmp: 0.12 },
-  ];
-
-  gemData.forEach((d, i) => {
-    const geo = geomTypes[i % geomTypes.length];
-    const mat = new THREE.MeshPhongMaterial({
-      color: d.color, emissive: d.color, emissiveIntensity: 0.15,
-      shininess: 120, transparent: true, opacity: 0.82, wireframe: false
-    });
-    const mesh = new THREE.Mesh(geo, mat);
-    mesh.position.set(...d.pos);
-    mesh.scale.setScalar(d.scale);
-    mesh.userData = { ...d, baseY: d.pos[1], t: Math.random() * Math.PI * 2 };
-    scene.add(mesh);
-    gems.push(mesh);
-  });
-
-  let time = 0;
-  (function render() {
-    requestAnimationFrame(render);
-    time += 0.01;
-    gems.forEach(g => {
-      g.userData.t += g.userData.speed;
-      g.position.y = g.userData.baseY + Math.sin(g.userData.t) * g.userData.floatAmp;
-      g.rotation.x += g.userData.speed * 0.7;
-      g.rotation.y += g.userData.speed;
-    });
-    renderer.render(scene, camera);
-  })();
-})();
+// ── (Mascots replace Three.js gems — no JS needed) ──────────
 
 // ── Scroll Reveal ──────────────────────────────────────────────
 const revealObs = new IntersectionObserver(entries => {
@@ -289,6 +221,22 @@ const T = {
     footer_apply: 'Application Form',
     footer_discord: '',
     footer_discord_txt: 'Join the Server',
+    nav_tg_news: 'TG NEWS',
+    tg_post_title: '<strong>410 applications in. Still not you? 🥷</strong>',
+    tg_post_body: 'Regional Lead Hunt is ongoing, 5 days left until the application ends. Claim your spot, show up, and get paid by working as a community team.',
+    tg_news_open: 'Open Telegram Channel',
+    tg_post_form: '👉 Form to apply',
+    news7_date: '8 MAR 2025',
+    news7_title: '🎯 Phase 1 Wrapping Up — Here\'s How Roles Work',
+    news7_body: 'On March 11, Phase 1 ends. ~60 <strong>Dliever</strong> and ~30 trial spots will be selected. <strong>Regional Lead</strong> — face of your region, growth & community management. <strong>Regional Helper (Mod)</strong> — translations, events, moderation. <strong>Dliever & other roles</strong> — content creation in <code>#creators</code>. Quality work gets featured in <code>#content-spotlight</code>.',
+    news7_btn: 'Fill the Form →',
+    news8_date: '8 MAR 2025',
+    news8_title: '📺 Weekly Community Spotlight — Live Review',
+    news8_body: 'March 8 at 19:00 — the team goes live to review the best community work and give real feedback on content quality and Discord activity. <a href="https://docs.google.com/forms/d/e/1FAlpQLSc1cJCwTX-bJc1R41CMucUuTGMrYdlqjQXq03aoArXEz3cyyg/viewform" target="_blank">Submit your work</a> to get featured.',
+    news9_date: '7 MAR 2025',
+    news9_title: '💼 Hiring: Part-time SMM Teammate',
+    news9_body: 'Dlicom is looking for a part-time SMM team member. Must be comfortable in Web3, follow trends, and create native content for X and Telegram. Deadline: March 20. <a href="https://forms.gle/qvBF4vKm8ynGPD618" target="_blank">Apply here</a>.',
+    news_tag_team: '💼 Team',
   },
 
   ru: {
@@ -464,6 +412,22 @@ const T = {
     footer_apply: 'Форма заявки',
     footer_discord: '',
     footer_discord_txt: 'Войти на сервер',
+    nav_tg_news: 'TG НОВОСТИ',
+    tg_post_title: '<strong>410 заявок уже подано. А ты ещё нет? 🥷</strong>',
+    tg_post_body: 'Regional Lead Hunt продолжается — осталось 5 дней до окончания приёма заявок. Займи своё место, приходи и получай оплату, работая в команде сообщества.',
+    tg_news_open: 'Открыть Telegram канал',
+    tg_post_form: '👉 Форма заявки',
+    news7_date: '8 МАР 2025',
+    news7_title: '🎯 Фаза 1 завершается — как работают роли',
+    news7_body: '11 марта завершается Фаза 1. Будут отобраны ~60 <strong>Dliever</strong> и ~30 мест на испытательный срок. <strong>Regional Lead</strong> — лицо региона, рост и управление сообществом. <strong>Regional Helper (Mod)</strong> — переводы, ивенты, модерация. <strong>Dliever и другие роли</strong> — создание контента в <code>#creators</code>. Лучшие работы попадают в <code>#content-spotlight</code>.',
+    news7_btn: 'Заполнить форму →',
+    news8_date: '8 МАР 2025',
+    news8_title: '📺 Еженедельный Community Spotlight — прямой эфир',
+    news8_body: '8 марта в 19:00 — команда выходит в прямой эфир для обзора лучших работ сообщества и обратной связи по качеству контента и активности в Discord. <a href="https://docs.google.com/forms/d/e/1FAlpQLSc1cJCwTX-bJc1R41CMucUuTGMrYdlqjQXq03aoArXEz3cyyg/viewform" target="_blank">Отправить работу</a>.',
+    news9_date: '7 МАР 2025',
+    news9_title: '💼 Вакансия: SMM-специалист (part-time)',
+    news9_body: 'Dlicom ищет SMM-специалиста на part-time. Нужно разбираться в Web3, следить за трендами и создавать нативный контент для X и Telegram. Дедлайн: 20 марта. <a href="https://forms.gle/qvBF4vKm8ynGPD618" target="_blank">Подать заявку</a>.',
+    news_tag_team: '💼 Команда',
   },
 
   ar: {
@@ -634,6 +598,22 @@ const T = {
     footer_apply: 'استمارة الطلب',
     footer_discord: '',
     footer_discord_txt: 'انضم إلى السيرفر',
+    nav_tg_news: 'أخبار TG',
+    tg_post_title: '<strong>410 طلبات تم تقديمها. ألست منهم بعد؟ 🥷</strong>',
+    tg_post_body: 'صيد قائد المنطقة مستمر، تبقى 5 أيام حتى انتهاء التقديم. احجز مكانك، شارك، واحصل على أجر من خلال العمل كفريق مجتمعي.',
+    tg_news_open: 'افتح قناة تليجرام',
+    tg_post_form: '👉 نموذج التقديم',
+    news7_date: '8 مارس 2025',
+    news7_title: '🎯 المرحلة 1 تنتهي — كيف تعمل الأدوار',
+    news7_body: 'في 11 مارس تنتهي المرحلة 1. سيتم اختيار ~60 <strong>Dliever</strong> و~30 مكان تجريبي. <strong>Regional Lead</strong> — وجه منطقتك والنمو وإدارة المجتمع. <strong>Regional Helper (Mod)</strong> — الترجمة والفعاليات والإشراف. <strong>Dliever وأدوار أخرى</strong> — إنشاء المحتوى في <code>#creators</code>.',
+    news7_btn: 'املأ النموذج →',
+    news8_date: '8 مارس 2025',
+    news8_title: '📺 تسليط الضوء الأسبوعي — بث مباشر',
+    news8_body: '8 مارس الساعة 19:00 — الفريق يبث مباشرة لمراجعة أفضل أعمال المجتمع وتقديم ملاحظات حقيقية. <a href="https://docs.google.com/forms/d/e/1FAlpQLSc1cJCwTX-bJc1R41CMucUuTGMrYdlqjQXq03aoArXEz3cyyg/viewform" target="_blank">أرسل عملك</a>.',
+    news9_date: '7 مارس 2025',
+    news9_title: '💼 توظيف: زميل SMM بدوام جزئي',
+    news9_body: 'Dlicom يبحث عن متخصص SMM بدوام جزئي. يجب أن تكون مرتاحاً في Web3 وتتابع الاتجاهات وتنشئ محتوى أصلي لـ X وTelegram. الموعد النهائي: 20 مارس. <a href="https://forms.gle/qvBF4vKm8ynGPD618" target="_blank">تقدم هنا</a>.',
+    news_tag_team: '💼 الفريق',
   },
 
   uk: {
@@ -809,6 +789,22 @@ const T = {
     footer_apply: 'Форма заявки',
     footer_discord: '',
     footer_discord_txt: 'Увійти на сервер',
+    nav_tg_news: 'TG НОВИНИ',
+    tg_post_title: '<strong>410 заявок вже подано. А ти ще ні? 🥷</strong>',
+    tg_post_body: 'Regional Lead Hunt триває — залишилось 5 днів до завершення прийому заявок. Займи своє місце, приходь і отримуй оплату, працюючи в команді спільноти.',
+    tg_news_open: 'Відкрити Telegram канал',
+    tg_post_form: '👉 Форма заявки',
+    news7_date: '8 БЕР 2025',
+    news7_title: '🎯 Фаза 1 завершується — як працюють ролі',
+    news7_body: '11 березня завершується Фаза 1. Буде обрано ~60 <strong>Dliever</strong> і ~30 місць на випробувальний термін. <strong>Regional Lead</strong> — обличчя регіону, зростання та управління спільнотою. <strong>Regional Helper (Mod)</strong> — переклади, івенти, модерація. <strong>Dliever та інші ролі</strong> — створення контенту в <code>#creators</code>.',
+    news7_btn: 'Заповнити форму →',
+    news8_date: '8 БЕР 2025',
+    news8_title: '📺 Щотижневий Community Spotlight — прямий ефір',
+    news8_body: '8 березня о 19:00 — команда виходить у прямий ефір для огляду кращих робіт спільноти та зворотного зв\'язку. <a href="https://docs.google.com/forms/d/e/1FAlpQLSc1cJCwTX-bJc1R41CMucUuTGMrYdlqjQXq03aoArXEz3cyyg/viewform" target="_blank">Надіслати роботу</a>.',
+    news9_date: '7 БЕР 2025',
+    news9_title: '💼 Вакансія: SMM-спеціаліст (part-time)',
+    news9_body: 'Dlicom шукає SMM-спеціаліста на part-time. Потрібно розбиратися в Web3, стежити за трендами та створювати нативний контент для X і Telegram. Дедлайн: 20 березня. <a href="https://forms.gle/qvBF4vKm8ynGPD618" target="_blank">Подати заявку</a>.',
+    news_tag_team: '💼 Команда',
   },
 
   vi: {
@@ -979,6 +975,22 @@ const T = {
     footer_apply: 'Mẫu đăng ký',
     footer_discord: '',
     footer_discord_txt: 'Tham gia Máy chủ',
+    nav_tg_news: 'TIN TG',
+    tg_post_title: '<strong>Đã có 410 đơn đăng ký. Còn bạn thì sao? 🥷</strong>',
+    tg_post_body: 'Cuộc săn Regional Lead đang diễn ra, còn 5 ngày nữa là hết hạn đăng ký. Giữ chỗ của bạn, tham gia và nhận thù lao khi làm việc trong đội ngũ cộng đồng.',
+    tg_news_open: 'Mở kênh Telegram',
+    tg_post_form: '👉 Đơn đăng ký',
+    news7_date: '8 TH3 2025',
+    news7_title: '🎯 Giai đoạn 1 sắp kết thúc — Vai trò hoạt động thế nào',
+    news7_body: 'Ngày 11/3, Giai đoạn 1 kết thúc. ~60 <strong>Dliever</strong> và ~30 suất thử việc sẽ được chọn. <strong>Regional Lead</strong> — đại diện khu vực, phát triển cộng đồng. <strong>Regional Helper (Mod)</strong> — dịch thuật, sự kiện, kiểm duyệt. <strong>Dliever & vai trò khác</strong> — sáng tạo nội dung trong <code>#creators</code>.',
+    news7_btn: 'Điền đơn →',
+    news8_date: '8 TH3 2025',
+    news8_title: '📺 Community Spotlight hàng tuần — Phát trực tiếp',
+    news8_body: 'Ngày 8/3 lúc 19:00 — đội ngũ phát trực tiếp đánh giá các tác phẩm tốt nhất và đưa phản hồi thực sự. <a href="https://docs.google.com/forms/d/e/1FAlpQLSc1cJCwTX-bJc1R41CMucUuTGMrYdlqjQXq03aoArXEz3cyyg/viewform" target="_blank">Gửi tác phẩm</a>.',
+    news9_date: '7 TH3 2025',
+    news9_title: '💼 Tuyển dụng: SMM bán thời gian',
+    news9_body: 'Dlicom đang tìm thành viên SMM bán thời gian. Cần am hiểu Web3, theo dõi xu hướng và tạo nội dung cho X và Telegram. Hạn chót: 20/3. <a href="https://forms.gle/qvBF4vKm8ynGPD618" target="_blank">Ứng tuyển</a>.',
+    news_tag_team: '💼 Nhóm',
   },
 
   hi: {
@@ -1149,6 +1161,22 @@ const T = {
     footer_apply: 'आवेदन फॉर्म',
     footer_discord: '',
     footer_discord_txt: 'सर्वर से जुड़ें',
+    nav_tg_news: 'TG समाचार',
+    tg_post_title: '<strong>410 आवेदन आ चुके हैं। क्या आपने अभी तक नहीं किया? 🥷</strong>',
+    tg_post_body: 'Regional Lead Hunt जारी है, आवेदन समाप्त होने में 5 दिन शेष हैं। अपनी जगह सुरक्षित करें, आएँ और कम्युनिटी टीम के रूप में काम करके भुगतान पाएँ।',
+    tg_news_open: 'Telegram चैनल खोलें',
+    tg_post_form: '👉 आवेदन फॉर्म',
+    news7_date: '8 मार 2025',
+    news7_title: '🎯 फेज़ 1 समाप्त हो रहा — रोल कैसे काम करते हैं',
+    news7_body: '11 मार्च को फेज़ 1 समाप्त होगा। ~60 <strong>Dliever</strong> और ~30 ट्रायल स्पॉट चुने जाएंगे। <strong>Regional Lead</strong> — क्षेत्र का चेहरा, ग्रोथ और कम्युनिटी मैनेजमेंट। <strong>Regional Helper (Mod)</strong> — अनुवाद, इवेंट, मॉडरेशन। <strong>Dliever और अन्य रोल</strong> — <code>#creators</code> में कंटेंट क्रिएशन।',
+    news7_btn: 'फॉर्म भरें →',
+    news8_date: '8 मार 2025',
+    news8_title: '📺 साप्ताहिक Community Spotlight — लाइव रिव्यू',
+    news8_body: '8 मार्च 19:00 बजे — टीम लाइव आकर बेहतरीन कम्युनिटी कार्यों की समीक्षा करेगी और वास्तविक फीडबैक देगी। <a href="https://docs.google.com/forms/d/e/1FAlpQLSc1cJCwTX-bJc1R41CMucUuTGMrYdlqjQXq03aoArXEz3cyyg/viewform" target="_blank">अपना काम भेजें</a>।',
+    news9_date: '7 मार 2025',
+    news9_title: '💼 भर्ती: पार्ट-टाइम SMM टीममेट',
+    news9_body: 'Dlicom पार्ट-टाइम SMM टीम मेंबर की तलाश में है। Web3 में सहज होना चाहिए, ट्रेंड फॉलो करें और X व Telegram के लिए नेटिव कंटेंट बनाएं। डेडलाइन: 20 मार्च। <a href="https://forms.gle/qvBF4vKm8ynGPD618" target="_blank">अभी आवेदन करें</a>।',
+    news_tag_team: '💼 टीम',
   }
 };
 
@@ -1171,3 +1199,26 @@ window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');
   if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
 });
+
+// ── TG News Popup ─────────────────────────────────────────────
+(function initTgPopup() {
+  const trigger = document.getElementById('tgNewsTrigger');
+  const popup = document.getElementById('tgNewsPopup');
+  const closeBtn = document.getElementById('tgNewsClose');
+  if (!trigger || !popup) return;
+
+  trigger.addEventListener('click', e => {
+    e.preventDefault();
+    e.stopPropagation();
+    popup.classList.toggle('open');
+  });
+  if (closeBtn) closeBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    popup.classList.remove('open');
+  });
+  document.addEventListener('click', e => {
+    if (!popup.contains(e.target) && !trigger.contains(e.target)) {
+      popup.classList.remove('open');
+    }
+  });
+})();

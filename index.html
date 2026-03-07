@@ -6,7 +6,7 @@
 <title>Dlicom — Community Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
 </head>
 <body>
 
@@ -26,6 +26,35 @@
     <a href="#team" data-i18n="nav_team">Team</a>
     <a href="#news" data-i18n="nav_news">News</a>
     <a href="#faq">FAQ</a>
+    <div class="tg-news-wrap">
+      <a href="#" class="tg-news-trigger" id="tgNewsTrigger">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        <span data-i18n="nav_tg_news">TG NEWS</span>
+        <span class="tg-news-dot"></span>
+      </a>
+      <div class="tg-news-popup" id="tgNewsPopup">
+        <div class="tg-news-popup-header">
+          <div class="tg-news-popup-header-left">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--cyan)" style="flex-shrink:0"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            <span class="tg-news-popup-title">Dlicom</span>
+          </div>
+          <button class="tg-news-popup-close" id="tgNewsClose">&times;</button>
+        </div>
+        <div class="tg-news-popup-img">
+          <img src="tg-post-img.png" alt="Dlicom Regional Hunt">
+        </div>
+        <div class="tg-news-popup-body">
+          <div class="tg-news-popup-badge">LATEST POST</div>
+          <p class="tg-news-popup-text" data-i18n="tg_post_title"><strong>410 applications in. Still not you? 🥷</strong></p>
+          <p class="tg-news-popup-desc" data-i18n="tg_post_body">Regional Lead Hunt is ongoing, 5 days left until the application ends. Claim your spot, show up, and get paid by working as a community team.</p>
+          <a href="https://discord.gg/yZdYa48gQM" target="_blank" class="tg-news-popup-form" data-i18n="tg_post_form">👉 Form to apply</a>
+        </div>
+        <a href="https://t.me/DlicomAppOfficial" target="_blank" class="tg-news-popup-link">
+          <span data-i18n="tg_news_open">Open Telegram Channel</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+      </div>
+    </div>
     <a href="https://discord.gg/BmYmRXc8" target="_blank" class="ncta" data-i18n="nav_discord">↗ Discord</a>
     <div class="lang-switcher">
       <button class="lang-btn" id="langBtn"><span class="lang-flag">🌐</span> <span id="langLabel">EN</span> ▾</button>
@@ -42,10 +71,17 @@
 </nav>
 
 <div class="hero" id="about">
-  <canvas id="threeCanvas"></canvas>
+  <div class="hero-mascots-bg">
+    <img src="mascot1.png" alt="Dili" class="hero-mascot hm-left" onerror="this.style.display='none'">
+    <img src="mascot2.png" alt="Dili" class="hero-mascot hm-right" onerror="this.style.display='none'">
+    <img src="mascot3.png" alt="Dili" class="hero-mascot hm-mid-right" onerror="this.style.display='none'">
+    <img src="mascot1.png" alt="Dili" class="hero-mascot hm-bot-left" onerror="this.style.display='none'">
+  </div>
   <div class="hero-content">
-    <div class="htag" data-i18n="hero_tag">🌍 Global Community</div>
     <div class="heyebrow">Dlicom Protocol</div>
+    <div class="hero-center-mascot">
+      <img src="mascot2.png" alt="Dili" onerror="this.style.display='none'">
+    </div>
     <h1 class="hero-h1">COMMUNITY<br><span class="accent-word">HUB</span></h1>
     <p class="hero-sub" data-i18n="hero_sub">Everything about <strong>Dlicom</strong> — a decentralized platform with DeFi, crypto wallet and social network. Guides, FAQ and news for the global community.</p>
     <div class="hbtns">
@@ -53,7 +89,6 @@
       <a href="https://www.dlicom.io" target="_blank" class="btn-b" data-i18n="hero_btn2">Project Website</a>
     </div>
   </div>
-  <div class="scroll-ind"><div class="sline"></div><span data-i18n="scroll">scroll</span></div>
 </div>
 
 <div class="stats-bar">
@@ -65,30 +100,6 @@
 
 <main>
 
-  <div class="mascot-strip reveal">
-    <svg width="72" height="72" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;filter:drop-shadow(0 0 16px rgba(91,44,240,0.7))">
-      <defs>
-        <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#3333cc" stop-opacity="0.7"/><stop offset="60%" stop-color="#1a1aaa" stop-opacity="0.4"/><stop offset="100%" stop-color="#000010" stop-opacity="0"/></radialGradient>
-        <radialGradient id="headGrad" cx="50%" cy="40%" r="55%"><stop offset="0%" stop-color="#111133"/><stop offset="100%" stop-color="#050510"/></radialGradient>
-      </defs>
-      <circle cx="100" cy="100" r="96" fill="url(#bgGlow)"/>
-      <circle cx="100" cy="100" r="72" fill="url(#headGrad)"/>
-      <rect x="8" y="90" width="42" height="16" rx="8" fill="#4040ee" transform="rotate(-12 29 98)"/>
-      <rect x="150" y="90" width="42" height="16" rx="8" fill="#4040ee" transform="rotate(12 171 98)"/>
-      <rect x="42" y="78" width="116" height="50" rx="25" fill="#4040ee"/>
-      <polygon points="100,128 88,128 94,148" fill="#4040ee"/>
-      <rect x="60" y="88" width="22" height="22" rx="2" fill="white" transform="rotate(45 71 99)"/>
-      <rect x="65" y="94" width="12" height="12" rx="1" fill="#111133" transform="rotate(45 71 100)"/>
-      <rect x="118" y="88" width="22" height="22" rx="2" fill="white" transform="rotate(45 129 99)"/>
-      <rect x="123" y="94" width="12" height="12" rx="1" fill="#111133" transform="rotate(45 129 100)"/>
-      <path d="M87 117 Q100 127 113 117" stroke="#111133" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    </svg>
-    <div class="mascot-text">
-      <div class="mascot-title" data-i18n="mascot_title">Meet Dili</div>
-      <p data-i18n="mascot_desc">The official Dlicom mascot — the face of SocialFi. Create a story, lore or concept about him and earn the <strong>Dliever</strong> role. Any format: text, video, art.</p>
-    </div>
-    <a href="https://www.figma.com/design/JLmiIppBpTUqUszsvyy5ur/Dlicom-branding?node-id=61-2819" target="_blank" class="btn-b" style="white-space:nowrap;font-size:14px;padding:11px 24px;" data-i18n="mascot_btn">Branding →</a>
-  </div>
 
   <div class="stitle reveal" data-i18n="sec_what">What is <span class="acc">Dlicom</span></div>
   <div class="grid-3 reveal">
@@ -108,6 +119,25 @@
   <div class="stitle reveal" id="news" data-i18n="sec_news">Discord <span class="acc">Updates</span></div>
   <div class="news-grid reveal">
     <div class="news-card news-card--hot">
+      <div class="news-meta"><span class="news-date" data-i18n="news7_date">8 MAR 2025</span><span class="news-badge new" data-i18n="news_badge_new">NEW</span></div>
+      <h3 class="news-title" data-i18n="news7_title">🎯 Phase 1 Wrapping Up — Here's How Roles Work</h3>
+      <p class="news-body" data-i18n="news7_body">On March 11, Phase 1 ends. ~60 <strong>Dliever</strong> and ~30 trial spots will be selected. <strong>Regional Lead</strong> — face of your region, growth & community management. <strong>Regional Helper (Mod)</strong> — translations, events, moderation. <strong>Dliever & other roles</strong> — content creation in <code>#creators</code>. Quality work gets featured in <code>#content-spotlight</code>.</p>
+      <a href="https://forms.gle/oTzqz2QE6uECEwfy8" target="_blank" class="btn-hunt-apply" style="margin-top:12px;font-size:13px;padding:9px 18px;"><span data-i18n="news7_btn">Fill the Form →</span></a>
+      <div class="news-tag" data-i18n="news_tag_hunt">🏹 Hunt</div>
+    </div>
+    <div class="news-card">
+      <div class="news-meta"><span class="news-date" data-i18n="news8_date">8 MAR 2025</span><span class="news-badge new" data-i18n="news_badge_new">NEW</span></div>
+      <h3 class="news-title" data-i18n="news8_title">📺 Weekly Community Spotlight — Live Review</h3>
+      <p class="news-body" data-i18n="news8_body">March 8 at 19:00 — the team goes live to review the best community work and give real feedback on content quality and Discord activity. <a href="https://docs.google.com/forms/d/e/1FAlpQLSc1cJCwTX-bJc1R41CMucUuTGMrYdlqjQXq03aoArXEz3cyyg/viewform" target="_blank">Submit your work</a> to get featured.</p>
+      <div class="news-tag" data-i18n="news_tag_announce">📣 Announcement</div>
+    </div>
+    <div class="news-card">
+      <div class="news-meta"><span class="news-date" data-i18n="news9_date">7 MAR 2025</span><span class="news-badge info" data-i18n="news_badge_info">INFO</span></div>
+      <h3 class="news-title" data-i18n="news9_title">💼 Hiring: Part-time SMM Teammate</h3>
+      <p class="news-body" data-i18n="news9_body">Dlicom is looking for a part-time SMM team member. Must be comfortable in Web3, follow trends, and create native content for X and Telegram. Deadline: March 20. <a href="https://forms.gle/qvBF4vKm8ynGPD618" target="_blank">Apply here</a>.</p>
+      <div class="news-tag" data-i18n="news_tag_team">💼 Team</div>
+    </div>
+    <div class="news-card news-card--hot">
       <div class="news-meta"><span class="news-date" data-i18n="news4_date">5 MAR 2025</span><span class="news-badge new" data-i18n="news_badge_new">NEW</span></div>
       <h3 class="news-title" data-i18n="news4_title">🛡️ Test Moderators Appointed</h3>
       <p class="news-body" data-i18n="news4_body">6 test moderators have been appointed in the Discord server. After a 2-week trial period, 2 of them will remain as permanent moderators. The selection process is underway — the best will stay.</p>
@@ -124,12 +154,6 @@
       <h3 class="news-title" data-i18n="news2_title">🚀 Regional Hunt launched</h3>
       <p class="news-body" data-i18n="news2_body">Applications for Regional Lead and Regional Helper are now officially open. The <strong>#nominations</strong> channel is unlocked for Junior Hunter role holders. Apply now and be among the first.</p>
       <div class="news-tag" data-i18n="news_tag_hunt">🏹 Hunt</div>
-    </div>
-    <div class="news-card">
-      <div class="news-meta"><span class="news-date" data-i18n="news3_date">FEB 2025</span><span class="news-badge info" data-i18n="news_badge_info">INFO</span></div>
-      <h3 class="news-title" data-i18n="news3_title">🎭 Dili lore contest</h3>
-      <p class="news-body" data-i18n="news3_body">Create a story, art or concept about the Dili mascot. The best 10 entries automatically earn the <strong>Dliever</strong> role. Post in <code>#creators</code> quoting the official X post.</p>
-      <div class="news-tag" data-i18n="news_tag_creators">🎨 Creators</div>
     </div>
     <div class="news-card" id="news5" style="display:none" data-langs="ru,uk">
       <div class="news-meta"><span class="news-date" data-i18n="news5_date">5 МАР 2025</span><span class="news-badge new" data-i18n="news_badge_new">NEW</span></div>
