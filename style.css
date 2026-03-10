@@ -674,3 +674,58 @@ footer{border-top:1px solid var(--border);padding:28px 60px;max-width:1100px;mar
   .news-grid{grid-template-columns:1fr;}
   .news-card--hot{grid-column:auto;}
 }
+
+/* ── RTL (Arabic) ──────────────────────────────────────────── */
+[dir="rtl"] {
+  text-align: right;
+}
+[dir="rtl"] nav .nlinks {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .hero-content {
+  direction: rtl;
+}
+[dir="rtl"] .step {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .snum {
+  text-align: right;
+}
+[dir="rtl"] .scont {
+  text-align: right;
+}
+[dir="rtl"] .hbtns {
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+[dir="rtl"] .brow {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .faq-q {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .phase ul {
+  padding-right: 16px;
+  padding-left: 0;
+}
+[dir="rtl"] .news-meta {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .tg-news-popup-header {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .token-wrap {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .fbrand {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .flinks {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .hunt-results-grid {
+  direction: rtl;
+}
+[dir="rtl"] .stats-bar {
+  direction: rtl;
+}
